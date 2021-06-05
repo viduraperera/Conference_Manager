@@ -5,6 +5,7 @@ import connectDB from './Database/db.js';
 import userRoute from './Routes/user.js';
 import authRoute from "./Routes/auth.js";
 import conferenceRoute from './Routes/conference.js'
+import workshopRoute from './Routes/workshop.js'
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => res.send("API Running"));
 app.use("/api/user", userRoute);
 app.use("/api/login", authRoute);
 app.use("/api/conference", conferenceRoute);
+app.use("/api/workshop", workshopRoute);
 
 const PORT = process.env.PORT || 5000;
 

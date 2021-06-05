@@ -43,7 +43,7 @@ export const deleteConference = (async(req, res)=>{
         const check = await Conference.findById({_id: req.params.id});
         if(!check) return res.status(404).send("Conference not found");
 
-        await Conference.remove((error, _)=>{
+        await Conference.deleteOne({_id: req.params.id}, (error, _)=>{
             if (error) return res.status(400).send(error);
             return res.status(200).send("Conference deleted");
         })
