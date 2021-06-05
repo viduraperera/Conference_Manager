@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
+import {Button} from "@material-ui/core";
 
 export default makeStyles((theme) => ({
     appBar: {
@@ -11,7 +12,7 @@ export default makeStyles((theme) => ({
         padding: '30px 50px',
     },
     heading: {
-        color: 'rgba(0,183,255, 1)',
+        color: 'rgb(0,85,255)',
         textDecoration: 'none',
     },
     image: {
@@ -21,6 +22,9 @@ export default makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'flex-end',
         width: '400px',
+    },
+    toolbarButton:{
+        paddingRight:20
     },
     profile: {
         display: 'flex',

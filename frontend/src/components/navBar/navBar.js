@@ -38,6 +38,14 @@ const navBar = () =>{
     const handleSignIn = () =>{
 
     }
+
+
+//handleAbout
+const handleAbout = () =>{
+
+    }
+
+
     return(
         <AppBar className={classes.appBar}  color={"transparent"}>
             <div className={classes.brandContainer}>
@@ -45,7 +53,7 @@ const navBar = () =>{
             </div>
             <Toolbar className={classes.toolbar}>
                 <div>
-                    <Button aria-controls={"simple-workshop"} aria-haspopup={"true"} onClick={handleWorkshop}>
+                    <Button className={classes.toolbarButton} aria-controls={"simple-workshop"} aria-haspopup={"true"} onClick={handleWorkshop}>
                         Workshops
                     </Button>
                     <Menu
@@ -60,7 +68,7 @@ const navBar = () =>{
                     </Menu>
                 </div>
                 <div>
-                    <Button aria-controls={"simple-research"} aria-haspopup={"true"} onClick={handleResearch}>
+                    <Button className={classes.toolbarButton} aria-controls={"simple-research"} aria-haspopup={"true"} onClick={handleResearch}>
                         Research
                     </Button>
                     <Menu
@@ -75,7 +83,10 @@ const navBar = () =>{
                     </Menu>
                 </div>
                 <div>
-                    <Button color={"primary"} onClick={handleSignIn}>
+                    <Button className={classes.toolbarButton} aria-haspopup={"true"} onClick={handleAbout}>
+                        About
+                    </Button>
+                    <Button className={classes.toolbarButton} color={"primary"} onClick={handleSignIn}>
                         Sign In
                     </Button>
                 </div>
