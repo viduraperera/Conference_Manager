@@ -5,7 +5,17 @@ const router = express.Router();
 
 export const getPayments = (async(req, res)=>{
     try {
-        const payments = await Payment.find({});
+        const payments = await Payment.find({}).
+        populate({
+            path: "user",
+            select: "name"
+        }).
+        populate({
+            path: "conference",
+            select: "-status -note -__v"
+        }).
+        select("-__v");
+
         return res.status(200).send(payments);
     } catch (error) {
         return res.status(500).send(error)
@@ -14,7 +24,16 @@ export const getPayments = (async(req, res)=>{
 
 export const getPayment = (async(req, res)=>{
     try {
-        const payment = await Payment.findById({_id: req.params.id});
+        const payment = await Payment.findById({_id: req.params.id}).
+        populate({
+            path: "user",
+            select: "name"
+        }).
+        populate({
+            path: "conference",
+            select: "-status -note -__v"
+        }).
+        select("-__v");
         if(!payment) return res.status(404).send("No Payment found");
         return res.status(200).send(payment);
     } catch (error) {

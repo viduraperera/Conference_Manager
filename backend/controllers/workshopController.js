@@ -5,7 +5,16 @@ const router = express.Router();
 
 export const getWorkshops = (async(req, res)=>{
     try {
-        const workshops = await Workshop.find({});
+        const workshops = await Workshop.find({}).
+        populate({
+            path: "conductor",
+            select: "name"
+        }).
+        populate({
+            path: "approved_by",
+            select: "name"
+        }).
+        select("-__v");
         return res.status(200).send(workshops);
     } catch (error) {
         return res.status(500).send(error)
@@ -14,7 +23,16 @@ export const getWorkshops = (async(req, res)=>{
 
 export const getWorkshop = (async(req, res)=>{
     try {
-        const workshop = await Workshop.findById({_id: req.params.id});
+        const workshop = await Workshop.findById({_id: req.params.id}).
+        populate({
+            path: "conductor",
+            select: "name"
+        }).
+        populate({
+            path: "approved_by",
+            select: "name"
+        }).
+        select("-__v");
         if(!workshop) return res.status(404).send("No workshop found");
         return res.status(200).send(workshop);
     } catch (error) {
