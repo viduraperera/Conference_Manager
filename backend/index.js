@@ -1,11 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./Database/db')
+import express from 'express';
+import cors from 'cors';
+import connectDB from './Database/db.js';
 
-const userRoute = require('./Routes/user');
-const authRoute = require('./Routes/auth')
+import userRoute from './Routes/user.js';
+import authRoute from "./Routes/auth.js";
 
 const app = express();
+
+app.use('/uploads', express.static('uploads'))
 
 //Database connection
 connectDB().then(
