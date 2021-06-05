@@ -1,6 +1,17 @@
 import React from 'react';
+import {Container} from "@material-ui/core";
 
-const App = () =>(
-        <h1>hello word</h1>
-)
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+
+import NavBar from "./src/components/navBar/navBar";
+
+const App = () =>{
+    return(
+        <BrowserRouter>
+            <Container maxWidth={"lg"}>
+                <NavBar/>
+            </Container>
+        </BrowserRouter>
+    )
+}
 export default App;
