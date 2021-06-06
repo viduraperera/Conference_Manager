@@ -9,4 +9,13 @@ API.interceptors.request.use((req) =>{
     return req;
 });
 
+//users auth urls
+export const signUp = (fromData) => API.post('/')
+
+
+//workshop urls
 export const fetchWorkshop = () => API.get('/workshop');
+export const createWorkshop = (newWorkshop) => API.post('/workshop', newWorkshop);
+export const fetchSingleWorkshop = (id) => API.get(`/workshop/${id}`);
+export const updateWorkshop = (workshop) => API.patch(`/workshop/${workshop._id}`, workshop);
+export const deleteWorkshop = (id) => API.delete(`/workshop/${id}`);
