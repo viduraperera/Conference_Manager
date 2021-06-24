@@ -4,14 +4,13 @@ const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
-    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).data.token}`;
+    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).payload.token}`;
   }
   return req;
 });
 
 //users auth urls
-export const signUp = (fromData) => API.post('/');
-export const login = (credentials) => API.post('/login', credentials);
+export const login = (credentials) => axios.post('http://localhost:5000/api/login', credentials);
 
 //workshop urls
 export const fetchWorkshop = () => API.get('/workshop');
