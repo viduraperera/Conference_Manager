@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API = axios.create({baseURL : 'http://localhost:1234/api'});
+const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
-API.interceptors.request.use((req) =>{
-    if(localStorage.getItem('profile')){
-        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).data.token}`;
-    }
-    return req;
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem('profile')) {
+    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).data.token}`;
+  }
+  return req;
 });
 
 //users auth urls
-export const signUp = (fromData) => API.post('/')
-
+export const signUp = (fromData) => API.post('/');
+export const login = (credentials) => API.post('/login', credentials);
 
 //workshop urls
 export const fetchWorkshop = () => API.get('/workshop');
