@@ -7,7 +7,7 @@ const CreateWorkshop = () =>{
     return(
         <div className={"container"}>
             <h1 className="display-5 text-center my-5">Create Workshop</h1>
-            <CreateWorkshopForm setIsCreated = {setIsCreated}/>
+            <CreateWorkshopForm setIsCreated={setIsCreated}/>
             {
                 isCreated && (
                     <div class="alert alert-success w-75 mx-auto mt-5" role="alert">
@@ -19,4 +19,4 @@ const CreateWorkshop = () =>{
     )
 }
 
-export default CreateWorkshop();
+export default CreateWorkshop;

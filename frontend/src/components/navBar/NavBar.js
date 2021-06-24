@@ -8,7 +8,7 @@ const NavBar = () =>{
                 <div className="bg-dark p-4">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">Home</a>
+                            <a className="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -16,7 +16,7 @@ const NavBar = () =>{
                                 Workshops
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Create WorkShop</a></li>
+                                <li><a className="dropdown-item" href="/createWorkshop">Create WorkShop</a></li>
                                 <li><a className="dropdown-item" href="#">View Approved Workshops</a></li>
                             </ul>
                         </li>
