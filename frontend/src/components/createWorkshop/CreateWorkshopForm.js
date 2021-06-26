@@ -1,27 +1,24 @@
 import React, {useState} from "react";
-import Select from "react-select";
 import {useDispatch} from "react-redux";
 import {createWorkshops} from "../../actions/workshop"
 
-const CreateWorkshopFrom = () =>{
+const CreateWorkshopFrom = ({setIsCreated}) =>{
 
     const [workshopData, setWorkshopData] = useState({
         title:'',
         description:'',
-        conductor:''
     });
 
     const dispatch = useDispatch();
 
-    const handleSubmit =  (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         console.log(workshopData);
-        const formData = new FormData();
-        formData.append("title", workshopData.title)
-        formData.append("description", workshopData.description)
-        formData.append("conductor", workshopData.conductor)
-        dispatch(createWorkshops(formData));
-        setWorkshopData({title: '', conductor: '', description: ''})
+        const workshop = {"title" : workshopData.title, "description" : workshopData.description}
+        console.log(workshop);
+        dispatch(createWorkshops({...workshop}));
+        setIsCreated(true);
+        setWorkshopData({title: '', description: ''})
     }
 
     return(
@@ -54,20 +51,6 @@ const CreateWorkshopFrom = () =>{
                             onChange={(e) => setWorkshopData({ ...workshopData, description: e.target.value })}
                         />
                         </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="mb-3 col">
-                        <label htmlFor="passMark" className="form-label">
-                            Conductor
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="passMark"
-                            value={workshopData.conductor}
-                            onChange={(e) => setWorkshopData({ ...workshopData, conductor: e.target.value })}
-                        />
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={handleSubmit}>

@@ -1,9 +1,11 @@
 import React from "react";
 
+import CountDown from "./countdown/CountDown";
+
 const Home = () =>{
     return(
         <div>
-            <h1>Home Page</h1>
+            <CountDown/>
         </div>
     )
 }

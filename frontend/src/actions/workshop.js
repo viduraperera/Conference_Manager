@@ -18,8 +18,9 @@ export const getWorkshops = () => async (dispatch) =>{
 export const createWorkshops = (workshop) => async (dispatch) =>{
 
     try {
-        await api.createWorkshop(workshop);
-
+        console.log(workshop);
+        const { data } = await api.createWorkshop(workshop);
+        dispatch ({type: CREATE_WORKSHOP, payload: data})
     }catch (error){
         console.log("creating workshop" + error);
     }
