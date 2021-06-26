@@ -28,9 +28,7 @@ const CountDown = () =>{
             setTimeLeft(calculateTimeLeft());
         }, 1000);
         return () => clearTimeout(timer);
-
         const timerComponents = [];
-
         Object.keys(timeLeft).forEach((interval) => {
             if (!timeLeft[interval]) {
                 return;
@@ -42,13 +40,13 @@ const CountDown = () =>{
                 </span>
             );
         });
-    });
+    }, []);
 
     return(
         <div>
             <h1>Annual Conference {year} Countdown</h1>
             <h2>Conference Starts In:</h2>
-
+            {timerComponents.length ? timerComponents : <span>Time's up!</span>}
         </div>
     )
 }
