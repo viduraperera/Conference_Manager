@@ -44,39 +44,43 @@ export default function login() {
 
   return (
     <div className="container">
-      <Typography variant="h6" color="textSecondary">
-        Login
-      </Typography>
-      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <TextField
-          className={classes.field}
-          label="Email"
-          variant="outlined"
-          fullWidth
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setEmailError(false);
-          }}
-          required
-          error={emailError}
-        />
-        <TextField
-          className={classes.field}
-          label="Password"
-          type="password"
-          variant="outlined"
-          fullWidth
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setPasswordError(false);
-          }}
-          error={passwordError}
-          required
-        />
-        <Button type="submit">Submit</Button>
-      </form>
+      <div className="card" style={{ marginTop: 25 }}>
+        <div className="card-body">
+          <h2 className="card-title">Login</h2>
+          <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <TextField
+              className={classes.field}
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError(false);
+              }}
+              required
+              error={emailError}
+            />
+            <TextField
+              className={classes.field}
+              label="Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError(false);
+              }}
+              error={passwordError}
+              required
+            />
+            <button type="submit" className="btn btn-outline-primary">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { LOGIN } from '../constants/constants';
+import { GET_USER, LOGIN } from '../constants/constants';
 import * as api from '../api/index.js';
 
 //getting workshops
@@ -11,11 +11,10 @@ export const login = (credentials) => async (dispatch) => {
   }
 };
 
-//create workshops
-// export const createWorkshops = (workshop) => async (dispatch) => {
-//   try {
-//     await api.createWorkshop(workshop);
-//   } catch (error) {
-//     console.log('creating workshop' + error);
-//   }
-// };
+export const getUser = () => (dispatch) => {
+  try {
+    dispatch({ type: GET_USER });
+  } catch (error) {
+    console.error(error);
+  }
+};
