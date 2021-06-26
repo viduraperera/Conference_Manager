@@ -11,8 +11,6 @@ const Home = () => {
   const user = useSelector((state) => state.auth.user);
   return (
     <div>
-      <h1>Home Page</h1>
-      <div>{JSON.stringify(user)}</div>
       <CountDown />
       <Workshops />
     </div>
