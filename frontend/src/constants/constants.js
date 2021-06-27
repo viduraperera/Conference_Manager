@@ -15,3 +15,4 @@ export const ROLES = {
     WORKSHOP_PRESENTER: 'workshopPresenter',
   },
 };
+export const GET_POSTS = 'GET_POSTS';

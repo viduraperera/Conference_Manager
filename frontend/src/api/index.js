@@ -19,3 +19,7 @@ export const createWorkshop = (newWorkshop) => API.post('/workshop', newWorkshop
 export const fetchSingleWorkshop = (id) => API.get(`/workshop/${id}`);
 export const updateWorkshop = (workshop) => API.patch(`/workshop/${workshop._id}`, workshop);
 export const deleteWorkshop = (id) => API.delete(`/workshop/${id}`);
+
+//editor url
+export const createPost = (post) => API.post('/post', post);
+export const getPosts = () => API.get('/post');

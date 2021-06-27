@@ -11,6 +11,7 @@ import Login from './src/components/auth/Login';
 import { ProtectedRoute } from './src/components/auth/ProtectedRoute';
 import { ROLES } from './src/constants/constants';
 import PostEditor from './src/components/editor/PostEditor';
+import Post from './src/components/editor/Post';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path={'/register'} exact component={Register} />
           <Route path={'/login'} exact component={Login} />
           <Route path={'/editor'} exact component={PostEditor} />
+          <Route path={'/post'} exact component={Post} />
         </Switch>
         <Footer />
       </BrowserRouter>
