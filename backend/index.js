@@ -8,6 +8,7 @@ import conferenceRoute from './Routes/conference.js';
 import workshopRoute from './Routes/workshop.js';
 import paymentRoute from './Routes/payment.js';
 import researchRoute from './Routes/research.js';
+import postRoute from './Routes/post.js';
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use('/api/conference', conferenceRoute);
 app.use('/api/workshop', workshopRoute);
 app.use('/api/payment', paymentRoute);
 app.use('/api/research', researchRoute);
+app.use('/api/post', postRoute);
 
 const PORT = process.env.PORT || 5000;
 

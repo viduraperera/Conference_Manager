@@ -12,6 +12,8 @@ import CreateResearch from "./src/components/createReasearch/CreateResearch";
 
 import { ProtectedRoute } from './src/components/auth/ProtectedRoute';
 import { ROLES } from './src/constants/constants';
+import PostEditor from './src/components/editor/PostEditor';
+import Keynotes from './src/components/keynote/Keynotes';
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
           <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
           <Route path={'/register'} exact component={Register} />
           <Route path={'/login'} exact component={Login} />
+          <Route path={'/editor'} component={PostEditor} />
+          <Route path={'/keynote'} exact component={Keynotes} />
         </Switch>
         <Footer/>
       </BrowserRouter>

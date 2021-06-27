@@ -21,8 +21,6 @@ export default function Register() {
     { value: 'workshopPresenter', label: 'Workshop Presenter' },
   ];
 
-  const roleList = ['Researcher', 'Workshop', 'Presenter', 'Attendee'];
-
   const [rePassword, setRePassword] = useState('');
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);

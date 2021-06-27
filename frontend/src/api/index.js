@@ -27,3 +27,8 @@ export const createResearch = (newResearch) => API.post('/research', newResearch
 export const fetchSingleResearch = (id) => API.get(`/research/${id}`);
 export const updateResearch = (workshop) => API.patch(`/research/${workshop._id}`, workshop);
 export const deleteResearch = (id) => API.delete(`/research/${id}`);
+//editor url
+export const createPost = (post) => API.post('/post', post);
+export const getPosts = () => API.get('/post');
+export const getPost = (postId) => API.get(`/post/${postId}`);
+export const updatePost = (post) => API.patch(`/post/${post._id}`, post);
