@@ -18,8 +18,7 @@ export default function Register() {
   const options = [
     { value: 'attendee', label: 'Attendee' },
     { value: 'researcher', label: 'Researcher' },
-    { value: 'workshop', label: 'Workshop' },
-    { value: 'presenter', label: 'Presenter' },
+    { value: 'workshopPresenter', label: 'Workshop Presenter' },
   ];
 
   const roleList = ['Researcher', 'Workshop', 'Presenter', 'Attendee'];

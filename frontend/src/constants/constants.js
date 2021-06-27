@@ -7,7 +7,11 @@ export const GET_USER = 'GET_USER';
 export const REGISTER = 'REGISTER';
 export const ROLES = {
   ADMIN: 'admin',
-  REVIEWER: 'Reviewer',
-  EDITOR: 'Editor',
-  USER: 'User',
+  REVIEWER: 'reviewer',
+  EDITOR: 'editor',
+  USER: {
+    ATTENDEE: 'attendee',
+    RESEARCHER: 'researcher',
+    WORKSHOP_PRESENTER: 'workshopPresenter',
+  },
 };
