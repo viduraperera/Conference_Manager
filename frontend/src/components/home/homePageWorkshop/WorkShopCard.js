@@ -1,9 +1,17 @@
 import React from "react";
 
-const WorkshopCard = () =>{
+
+const WorkshopCard = ({workshop}) =>{
     return(
-        <div>
-            <h1>this is the work Shop Card</h1>
+        <div className={"col-sm-3"}>
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">{workshop.title}</h5>
+                    <p className="card-text">{workshop.description}</p>
+                    <p className="card-text">{workshop.venue}</p>
+                    <p className="card-text">{workshop.date}</p>
+                </div>
+            </div>
         </div>
     )
 }
