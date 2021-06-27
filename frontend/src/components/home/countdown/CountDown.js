@@ -41,11 +41,13 @@ const CountDown = () => {
     );
   });
   return (
-    <div>
-      <h1>Annual Conference {year} Countdown</h1>
-      <h2>Conference Starts In:</h2>
-      <h2>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</h2>
-    </div>
+      <div className={"display-5 text-center my-5"}>
+        <div>
+          <h1>Annual Conference {year} Countdown</h1>
+          <h2>Conference Starts In:</h2>
+          <h2>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</h2>
+        </div>
+      </div>
   );
 };
 

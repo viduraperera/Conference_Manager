@@ -16,7 +16,7 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path={'/'} exact component={Home}></Route>
-          <ProtectedRoute path={'/createWorkshop'} exact component={CreateWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER]}></ProtectedRoute>
+          <ProtectedRoute path={'/createWorkshop'} exact component={CreateWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
           <Route path={'/register'} exact component={Register} />
           <Route path={'/login'} exact component={Login} />
         </Switch>
