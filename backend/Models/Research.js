@@ -1,18 +1,16 @@
 import mongoose from 'mongoose';
 
-const WorkshopSchema = new mongoose.Schema({
+const ResearchSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  venue: {
-    type: String,
-    required: false,
-  },
-  date: {
-    type: Date,
-    required: false,
-  },
+  keywords: [
+    {
+      type: String,
+      required: false,
+    },
+  ],
   description: {
     type: String,
     required: true,
@@ -20,7 +18,7 @@ const WorkshopSchema = new mongoose.Schema({
   path: {
     type: String,
   },
-  conductor: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
@@ -39,6 +37,6 @@ const WorkshopSchema = new mongoose.Schema({
   },
 });
 
-const Workshop = mongoose.model('Workshop', WorkshopSchema);
+const Workshop = mongoose.model('Research', ResearchSchema);
 
 export default Workshop;
