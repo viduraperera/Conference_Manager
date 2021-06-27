@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import { TextField, Typography, Button } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import Select from 'react-select';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { register as registerUser } from '../../actions/auth';
 
-const useStyles = makeStyles((theme) => ({
-  field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: 'block',
-  },
-}));
-
-export default function register() {
-  const classes = useStyles();
+export default function Register() {
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     name: '',
@@ -21,6 +14,13 @@ export default function register() {
     contactNo: '',
     role: '',
   });
+
+  const options = [
+    { value: 'attendee', label: 'Attendee' },
+    { value: 'researcher', label: 'Researcher' },
+    { value: 'workshop', label: 'Workshop' },
+    { value: 'presenter', label: 'Presenter' },
+  ];
 
   const roleList = ['Researcher', 'Workshop', 'Presenter', 'Attendee'];
 
@@ -39,7 +39,7 @@ export default function register() {
     setContactNoError(false);
     setRoleError(false);
     if (user.name && user.email && user.password && user.contactNo && user.role && user.password === rePassword) {
-      console.log(user);
+      dispatch(registerUser({ ...user }));
     } else {
       handleErrors();
     }
@@ -81,7 +81,7 @@ export default function register() {
                   setNameError(false);
                 }}
               />
-              {emailError ? <div className="text-danger">Please enter your name.</div> : ''}
+              {nameError ? <div className="text-danger">Please enter your name.</div> : ''}
             </div>
             <div className="col-md-6">
               <label className="form-label">Email</label>
@@ -109,7 +109,7 @@ export default function register() {
                   setPasswordError(false);
                 }}
               />
-              {emailError ? <div className="text-danger">Please enter your password.</div> : ''}
+              {passwordError ? <div className="text-danger">Please enter your password.</div> : ''}
             </div>
             <div className="col-md-6">
               <label className="form-label">Confirm Password</label>
@@ -124,12 +124,12 @@ export default function register() {
                   setPasswordError(false);
                 }}
               />
-              {emailError ? <div className="text-danger">Please confirm your password.</div> : ''}
+              {passwordError ? <div className="text-danger">Please confirm your password.</div> : ''}
             </div>
             <div className="col-md-6">
               <label className="form-label">Contact Number</label>
               <input
-                type="password"
+                type="text"
                 className="form-control"
                 required
                 value={user.contactNo}
@@ -138,20 +138,21 @@ export default function register() {
                   setContactNoError(false);
                 }}
               />
-              {emailError ? <div className="text-danger">Please enter your contact Number.</div> : ''}
+              {contactNoError ? <div className="text-danger">Please enter your contact Number.</div> : ''}
             </div>
             <div className="col-md-6">
               <label className="form-label">Register As</label>
-              <select className="form-select" aria-label="Default select example">
-                {roleList.map((role, index) => (
-                  <option value={role} key={index}>
-                    {role}
-                  </option>
-                ))}
-              </select>
+              <Select
+                options={options}
+                onChange={(e) => {
+                  setUser({ ...user, role: e.value });
+                  setRoleError(false);
+                }}
+              />
+              {roleError ? <div className="text-danger">Please enter your registration type.</div> : ''}
             </div>
             <button type="submit" className="btn btn-outline-primary">
-              Login
+              Register
             </button>
           </form>
         </div>

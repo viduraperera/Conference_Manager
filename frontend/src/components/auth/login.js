@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { login as loginUser } from '../../actions/auth';
 
-export default function login() {
+export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

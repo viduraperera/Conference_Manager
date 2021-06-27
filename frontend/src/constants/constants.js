@@ -4,6 +4,7 @@ export const FETCH_ONE_WORKSHOP = 'FETCH_ONE_WORKSHOP';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const GET_USER = 'GET_USER';
+export const REGISTER = 'REGISTER';
 export const ROLES = {
   ADMIN: 'admin',
   REVIEWER: 'Reviewer',

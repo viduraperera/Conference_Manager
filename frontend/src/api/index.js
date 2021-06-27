@@ -11,6 +11,7 @@ API.interceptors.request.use((req) => {
 
 //users auth urls
 export const login = (credentials) => axios.post('http://localhost:5000/api/login', credentials);
+export const register = (user) => axios.post('http://localhost:5000/api/user', user);
 
 //workshop urls
 export const fetchWorkshop = () => API.get('/workshop');

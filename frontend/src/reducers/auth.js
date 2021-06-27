@@ -1,4 +1,4 @@
-import { GET_USER, LOGIN, LOGOUT } from '../constants/constants';
+import { GET_USER, LOGIN, LOGOUT, REGISTER } from '../constants/constants';
 
 const AuthReducer = (state = { user: null }, action) => {
   switch (action.type) {
@@ -11,6 +11,9 @@ const AuthReducer = (state = { user: null }, action) => {
       return { ...state, user: null };
     case GET_USER:
       return { ...state, user: JSON.parse(localStorage.getItem('profile'))?.payload.user };
+    case REGISTER:
+      console.log(action?.payload);
+      return state;
     default:
       return state;
   }
