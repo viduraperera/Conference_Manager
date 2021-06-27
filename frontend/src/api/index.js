@@ -19,3 +19,11 @@ export const createWorkshop = (newWorkshop) => API.post('/workshop', newWorkshop
 export const fetchSingleWorkshop = (id) => API.get(`/workshop/${id}`);
 export const updateWorkshop = (workshop) => API.patch(`/workshop/${workshop._id}`, workshop);
 export const deleteWorkshop = (id) => API.delete(`/workshop/${id}`);
+
+
+//research urls
+export const fetchResearch = () => API.get('/research');
+export const createResearch = (newResearch) => API.post('/research', newResearch);
+export const fetchSingleResearch = (id) => API.get(`/research/${id}`);
+export const updateResearch = (workshop) => API.patch(`/research/${workshop._id}`, workshop);
+export const deleteResearch = (id) => API.delete(`/research/${id}`);

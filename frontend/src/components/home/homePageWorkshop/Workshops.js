@@ -17,13 +17,12 @@ const Workshop = () =>{
         console.log(workshops);
 
     return(
-            <div className={"row container-lg mx-auto mt-5 px-0"}>
+            <div className={"row align-items-md-stretch h-100 p-5 text-dark  rounded-3"}>
                 <h1 className="display-5 text-center mb-5">Workshops</h1>
-                <div>
                     {workshops?.map((workshop) =>{
                         return <WorkshopCard workshop={workshop} key={workshop._id}/>
                     })}
-                </div>
+
             </div>
     );
 }
