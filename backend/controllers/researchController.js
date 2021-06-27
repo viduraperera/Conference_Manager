@@ -24,7 +24,7 @@ export const getResearches = async (req, res) => {
 export const getResearch = async (req, res) => {
   try {
     const research = await Research.findById({ _id: req.params.id })
-      .research({
+      .populate({
         path: 'user',
         select: 'name',
       })
