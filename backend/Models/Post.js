@@ -30,6 +30,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Post = mongoose.model('Post', PostSchema);
