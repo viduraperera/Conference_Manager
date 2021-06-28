@@ -28,7 +28,7 @@ const ResearchSchema = new mongoose.Schema({
   },
   status: {
     type: Boolean,
-    required: false,
+    required: true,
     default: false,
   },
   note: {
