@@ -32,7 +32,7 @@ const PostEditor = () => {
 
   const user = useSelector((state) => state.auth.user);
 
-  const postId = location.pathname.split('/')[2].trim();
+  const postId = location.pathname.split('/')[2];
   if (postId) {
     useEffect(() => {
       dispatch(getPost(postId));
@@ -41,7 +41,6 @@ const PostEditor = () => {
   const postState = useSelector((state) => state.post);
   const post = postState?.post;
   useEffect(() => {
-    console.log();
     if (post) {
       setTitle(post.title);
       setDefaultSelect(options.findIndex((item) => item.value === post?.category));

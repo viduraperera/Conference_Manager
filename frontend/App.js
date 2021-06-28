@@ -13,7 +13,7 @@ import CreateResearch from "./src/components/createReasearch/CreateResearch";
 import { ProtectedRoute } from './src/components/auth/ProtectedRoute';
 import { ROLES } from './src/constants/constants';
 import PostEditor from './src/components/editor/PostEditor';
-import Keynotes from './src/components/keynote/Keynotes';
+import EditorPosts from './src/components/EditorPost/EditorPosts';
 import AdminPanel from './src/components/admin/AdminPanel';
 
 const App = () => {
@@ -30,7 +30,9 @@ const App = () => {
           <Route path={'/register'} exact component={Register} />
           <Route path={'/login'} exact component={Login} />
           <Route path={'/editor'} component={PostEditor} />
-          <Route path={'/keynote'} exact component={Keynotes} />
+          <Route path={'/keynote'} exact component={EditorPosts} />
+          <Route path={'/call_for_research_papers'} exact component={EditorPosts} />
+          <Route path={'/call_for_workshops'} exact component={EditorPosts} />
           <Route path={'/admin'} exact component={AdminPanel} />
         </Switch>
         <Footer/>

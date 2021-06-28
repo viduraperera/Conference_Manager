@@ -32,3 +32,4 @@ export const createPost = (post) => API.post('/post', post);
 export const getPosts = () => API.get('/post');
 export const getPost = (postId) => API.get(`/post/${postId}`);
 export const updatePost = (post) => API.patch(`/post/${post._id}`, post);
+export const deletePost = (postId) => API.delete(`/post/${postId}`);
