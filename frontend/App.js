@@ -12,6 +12,7 @@ import { ProtectedRoute } from './src/components/auth/ProtectedRoute';
 import { ROLES } from './src/constants/constants';
 import PostEditor from './src/components/editor/PostEditor';
 import Keynotes from './src/components/keynote/Keynotes';
+import AdminPanel from './src/components/admin/AdminPanel';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path={'/login'} exact component={Login} />
           <Route path={'/editor'} component={PostEditor} />
           <Route path={'/keynote'} exact component={Keynotes} />
+          <Route path={'/admin'} exact component={AdminPanel} />
         </Switch>
         <Footer />
       </BrowserRouter>

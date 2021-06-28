@@ -6,19 +6,20 @@ import { useHistory } from 'react-router-dom';
 import Keynote from './Keynote';
 
 function Keynotes() {
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
+
   const posts = useSelector((state) => state.post);
   const dispatch = useDispatch();
   let history = useHistory();
 
   const keynotes = posts?.posts?.filter((post) => post.category === 'keynote');
 
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
-
   const handleDelete = (post) => {
     let deletedPost = { ...post };
     deletedPost.isDeleted = true;
+    deletedPost.status = false;
     console.log(deletedPost);
     dispatch(updatePost({ ...deletedPost }));
   };

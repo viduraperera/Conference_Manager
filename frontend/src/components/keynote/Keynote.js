@@ -25,7 +25,7 @@ function Keynote({ post, handleUpdate, handleDelete }) {
           </button>
         </>
       ) : (
-        'bye'
+        ''
       )}
     </div>
   );
