@@ -21,7 +21,6 @@ const ApprovedWorkshop = () =>{
             {workshops?.map((workshop) =>{
                 return <ApprovedWorkshopCard workshop={workshop} key={workshop._id}/>
             })}
-
         </div>
     )
 

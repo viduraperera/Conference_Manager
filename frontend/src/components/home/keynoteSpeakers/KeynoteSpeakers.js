@@ -1,10 +1,11 @@
 import React from "react";
+import KeynoteSpeakerCard from "./KeynoteSpeakerCard";
 
 const KeynoteSpeakers = () =>{
 
     return(
         <div>
-            <h1>keynote speaker card</h1>
+            <KeynoteSpeakerCard/>
         </div>
     )
 }

@@ -46,7 +46,7 @@ const NavBar = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/approvedResearch">
                       View Approved Research Papers
                     </a>
                   </li>

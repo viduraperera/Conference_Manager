@@ -24,8 +24,8 @@ const App = () => {
         <Switch>
           <Route path={'/'} exact component={Home}></Route>
           <ProtectedRoute path={'/createWorkshop'} exact component={CreateWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
-          <ProtectedRoute path={'/createResearch'} exact component={CreateResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER]}></ProtectedRoute>
-          <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
+          <ProtectedRoute path={'/createResearch'} exact component={CreateResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
+          <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
           <Route path={'/register'} exact component={Register} />
           <Route path={'/login'} exact component={Login} />
           <Route path={'/editor'} component={PostEditor} />
