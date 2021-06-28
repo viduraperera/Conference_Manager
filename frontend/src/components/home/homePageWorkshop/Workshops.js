@@ -16,15 +16,22 @@ const Workshop = () =>{
         const workshops = useSelector( (state) => state.workshop.workshops);
         console.log(workshops);
 
+        //style objects
+        const WorkshopStyle = {
+            height: "200px" 
+        }
+
     return(
-            <div className={"row container-lg mx-auto mt-5 px-0"}>
-                <h1 className="display-5 text-center mb-5">Workshops</h1>
-                <div>
-                    {workshops?.map((workshop) =>{
-                        return <WorkshopCard workshop={workshop} key={workshop._id}/>
-                    })}
-                </div>
-            </div>
+        <div className={"row container-lg mx-auto mt-5 px-0"}>
+            <h1 className="display-5 text-center mb-5">Workshops</h1>
+
+            <div>
+                {workshops?.map((workshop) =>{
+                    return <WorkshopCard workshop={workshop} key={workshop._id}/>
+                })}
+            </div> 
+            
+        </div>
     );
 }
 
