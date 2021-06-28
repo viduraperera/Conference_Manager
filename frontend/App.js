@@ -15,6 +15,7 @@ import { ROLES } from './src/constants/constants';
 import PostEditor from './src/components/editor/PostEditor';
 import EditorPosts from './src/components/EditorPost/EditorPosts';
 import AdminPanel from './src/components/admin/AdminPanel';
+import Payment from './src/components/payment/Payment';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
           <Route path={'/call_for_research_papers'} exact component={EditorPosts} />
           <Route path={'/call_for_workshops'} exact component={EditorPosts} />
           <Route path={'/admin'} exact component={AdminPanel} />
+          <Route path={'/payment'} exact component={Payment} />
         </Switch>
         <Footer/>
       </BrowserRouter>
