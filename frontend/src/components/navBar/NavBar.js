@@ -29,7 +29,7 @@ const NavBar = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/approvedWorkshops">
                       View Approved Workshops
                     </a>
                   </li>
@@ -41,7 +41,7 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/createResearch">
                       Create Research Paper
                     </a>
                   </li>
