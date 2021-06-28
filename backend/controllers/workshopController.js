@@ -44,11 +44,13 @@ export const createWorkshop = async (req, res) => {
   try {
     const workshop = new Workshop({ ...req.body });
     workshop.path = req.file.path;
+    console.log(workshop)
     workshop.save((error, savedWorkshop) => {
       if (error) return res.status(400).send(error);
       return res.status(201).send(savedWorkshop);
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).send(error);
   }
 };

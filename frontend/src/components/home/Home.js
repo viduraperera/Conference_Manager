@@ -4,6 +4,7 @@ import { getUser } from '../../actions/auth';
 import CountDown from './countdown/CountDown';
 import Workshops from './homePageWorkshop/Workshops';
 import Research from "./homePageResearch/Research";
+import KeynoteSpeakers from "./keynoteSpeakers/KeynoteSpeakers";
 
 const Home = () => {
 
@@ -20,6 +21,7 @@ const Home = () => {
       <CountDown />
       <Workshops />
       <Research/>
+      <KeynoteSpeakers/>
     </div>
   );
 };

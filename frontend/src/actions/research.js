@@ -18,7 +18,7 @@ export const getResearch = () => async (dispatch) =>{
 export const createResearch = (research) => async (dispatch) =>{
 
     try{
-        const  {data} = await api.createResearch();
+        const {data} = await api.createResearch(research);
         dispatch({type: CREATE_RESEARCH, payload:data});
     }catch (error){
         console.log("creating research" + error)

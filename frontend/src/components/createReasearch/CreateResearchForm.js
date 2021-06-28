@@ -7,24 +7,27 @@ const CreateResearchForm = ({setIsCreated}) =>{
     const [researchData, setResearchData] = useState({
         title: '',
         description:'',
-        path:''
+        file:''
     })
 
     const dispatch = useDispatch();
 
     const  handleFile = (e) =>{
-        console.log(e.target.file[0])
-        setResearchData({...researchData, path: e.target.file[0]})
+        console.log(e.target.files[0])
+        setResearchData({...researchData, file: e.target.files[0]})
     }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(researchData);
-        const research = {"title": researchData.title, "description": researchData.description, "path": researchData.path}
-        console.log(research);
-        dispatch(createResearch(...research));
+        console.log(researchData.title);
+        let formData = new FormData();
+        formData.append('title', researchData.title)
+        formData.append('description', researchData.description)
+        formData.append('file', researchData.file)
+        console.log(formData.get('title'));
+        dispatch(createResearch(formData));
         setIsCreated(true);
-        setResearchData({title: '', description: '', path: ''})
+        setResearchData({title: '', description: '', file: ''})
     }
 
     return(
