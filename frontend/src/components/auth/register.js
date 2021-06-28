@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
-import { register as registerUser } from '../../actions/auth';
+import { getUser, register as registerUser } from '../../actions/auth';
 
 export default function Register() {
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getUser())
+  },[])
+
+  const admin = useSelector((state) => state.auth.user);
 
   const [user, setUser] = useState({
     name: '',
@@ -15,11 +21,21 @@ export default function Register() {
     role: '',
   });
 
-  const options = [
-    { value: 'attendee', label: 'Attendee' },
-    { value: 'researcher', label: 'Researcher' },
-    { value: 'workshopPresenter', label: 'Workshop Presenter' },
-  ];
+  let options = [];
+  if(admin){
+    options = [
+      { value: 'admin', label: 'Admin' },
+      { value: 'editor', label: 'Editor' },
+      { value: 'reviewer', label: 'Reviewer' },
+    ];
+  }else {
+    options = [
+      { value: 'attendee', label: 'Attendee' },
+      { value: 'researcher', label: 'Researcher' },
+      { value: 'workshopPresenter', label: 'Workshop Presenter' },
+    ];
+  }
+
 
   const [rePassword, setRePassword] = useState('');
   const [nameError, setNameError] = useState(false);
@@ -64,7 +80,7 @@ export default function Register() {
     <div className="container">
       <div className="card" style={{ marginTop: 25 }}>
         <div className="card-body">
-          <h2 className="card-title">Register</h2>
+          <h2 className="card-title">Register { admin ? 'a System User' : ''}</h2>
           <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
             <div className="col-md-6">
               <label className="form-label">Name</label>
@@ -72,6 +88,7 @@ export default function Register() {
                 type="text"
                 className="form-control"
                 value={user.name}
+                placeholder="Name"
                 required
                 onChange={(e) => {
                   setUser({ ...user, name: e.target.value });
@@ -86,6 +103,7 @@ export default function Register() {
                 type="text"
                 className="form-control"
                 required
+                placeholder="user@sliit.lk"
                 value={user.email}
                 onChange={(e) => {
                   setUser({ ...user, email: e.target.value });
@@ -129,6 +147,7 @@ export default function Register() {
                 type="text"
                 className="form-control"
                 required
+                placeholder="771234567"
                 value={user.contactNo}
                 onChange={(e) => {
                   setUser({ ...user, contactNo: e.target.value });
@@ -148,7 +167,7 @@ export default function Register() {
               />
               {roleError ? <div className="text-danger">Please enter your registration type.</div> : ''}
             </div>
-            <button type="submit" className="btn btn-outline-primary">
+            <button type="submit" className="btn btn-outline-primary col-md-4 mx-auto">
               Register
             </button>
           </form>
