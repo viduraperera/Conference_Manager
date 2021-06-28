@@ -1,16 +1,45 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useSelector, useDispatch } from 'react-redux'
+import {getUser} from '../../actions/auth'
+import { makePayment } from '../../actions/payment';
 
 function Payment() {
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getUser())
+    }, [])
+    const user = useSelector((state) => state.auth.user);
+
     const [cardNumber, setCardNumber] = useState('')
     const [accountHolder, setAccountHolder] = useState('')
     const [amount, setAmount] = useState(1000)
     const [cardNumberError, setCardNumberError] = useState('')
     const [accountHolderError, setAccountHolderError] = useState('')
-    const handleSubmit = () => {
-        console.log('kk');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(cardNumber && accountHolder && amount){
+            const pay = {
+                user: user._id,
+                amount
+            }
+            dispatch(makePayment(pay))
+        }else {
+            handleError();
+        }
+    }
+
+    const handleError = () => {
+        if(!cardNumber){
+            setCardNumberError(true)
+        }
+        if(!accountHolder){
+            setAccountHolderError(true)
+        }
     }
     return (
         <div className="container">
+            <h2>One Time Attendee Payment</h2>
             <div className="card my-3">
                 <div className="card-body">
                     <h2 className="card-title text-center">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { login as loginUser } from '../../actions/auth';
+import ToastMessage from '../common/ToastMessage';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -9,13 +10,16 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [logError, setLogError] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setEmailError(false);
     setPasswordError(false);
     if (email && password) {
-      dispatch(loginUser({ email, password }));
+      const res = await dispatch(loginUser({ email, password }))
+      console.log(res);
     } else {
       handleErrors();
     }
@@ -33,6 +37,7 @@ export default function Login() {
 
   return (
     <div className="container">
+      {showToast ? <ToastMessage/>: ''}
       <div className="card" style={{ marginTop: 25 }}>
         <div className="card-body">
           <h2 className="card-title">Login</h2>

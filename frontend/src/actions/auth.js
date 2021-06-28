@@ -4,10 +4,12 @@ import * as api from '../api/index.js';
 //getting workshops
 export const login = (credentials) => async (dispatch) => {
   try {
-    const { data } = await api.login(credentials);
-    dispatch({ type: LOGIN, payload: data });
+    const res = await api.login(credentials);
+    dispatch({ type: LOGIN, payload: res.data });
+    return {...res};
   } catch (error) {
     console.log('login error' + error);
+    return {...error}
   }
 };
 
