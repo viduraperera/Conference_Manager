@@ -31,10 +31,11 @@ export const createResearch = (research) => async (dispatch) =>{
 export  const updateResearch = (research) => async (dispatch) =>{
 
     try {
-        await api.updateResearch();
-
+        const res = await api.updateResearch(research);
+        return {...res}
     }catch (error){
         console.log("update research" + error);
+        return {...error}
     }
 }
 
@@ -42,9 +43,10 @@ export  const updateResearch = (research) => async (dispatch) =>{
 export const removeResearch = (id) => async (dispatch) =>{
 
     try{
-        await api.deleteResearch();
-
+        const res = await api.deleteResearch();
+        return {...res}
     }catch (error){
         console.log("delete research" + error);
+        return {...error}
     }
 }

@@ -44,10 +44,11 @@ export const getWorkshop = (id) => async  (dispatch) =>{
 export const updateWorkshops = (workshop) => async (dispatch) => {
 
     try {
-        await api.updateWorkshop(workshop);
-
+        const res = await api.updateWorkshop(workshop);
+        return {...res}
     }catch (error){
         console.log("update workshop error" + error);
+        return {...error}
     }
 }
 
@@ -55,10 +56,11 @@ export const updateWorkshops = (workshop) => async (dispatch) => {
 export const removeWorkshop = (id) => async (dispatch) =>{
 
     try {
-        await api.deleteWorkshop(id);
-
+        const res = await api.deleteWorkshop(id);
+        return {...res}
     }catch (error){
         console.log("delete workshop" + error);
+        return {...error}
     }
 }
 
