@@ -43,7 +43,7 @@ const CreateResearchForm = () =>{
                 addToast('Research Created Successfully. An Email will be sent with Approval', { appearance: 'success', autoDismiss: true, });
             } else {
                 addToast('Research Created Error', { appearance: 'error', autoDismiss: true, });
-              }
+            }
         } else {
             formData.append('conductor', user._id);
             const res = await dispatch(createWorkshops(formData));
@@ -51,7 +51,7 @@ const CreateResearchForm = () =>{
                 addToast('Workshop Created Successfully. An Email will be sent with Approval', { appearance: 'success', autoDismiss: true, });
             } else {
                 addToast('Workshop Created Error', { appearance: 'error', autoDismiss: true, });
-              }
+            }
         }
         setResearchData({title: '', description: '', file: ''})
     }

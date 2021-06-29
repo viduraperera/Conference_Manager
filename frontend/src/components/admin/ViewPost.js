@@ -5,7 +5,7 @@ function ViewPost({ post }) {
   return (
     <div>
       <button type="button" className="btn btn-outline-primary m-2" data-bs-toggle="modal" data-bs-target="#postModal">
-        View
+        View Post
       </button>
 
       <div className="modal fade" id="postModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

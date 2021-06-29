@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePost, getPosts, updatePost } from '../../actions/post';
 import { getUser } from '../../actions/auth';
+import { useToasts } from 'react-toast-notifications';
 
 import Posts from './Posts';
 
 function AdminPanel() {
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
   useEffect(() => {
     dispatch(getUser());
     dispatch(getPosts());
@@ -21,18 +23,27 @@ function AdminPanel() {
     dispatch(getPosts());
   }, [posts]);
 
-  const handleApprove = (post) => { //if post is deleted make a delete request
+  const handleApprove = async (post) => { //if post is deleted make a delete request
     let postItem = { ...post };
-    console.log(postItem);
     if(postItem.isDeleted && postItem.status){
       setFilterPosts(post?.posts?.filter((post)=> post.id !== postItem._id));
-      dispatch(deletePost(postItem._id));
+      const res = await dispatch(deletePost(postItem._id));
+      if(res.status === 200){
+        addToast('Post Deleted Successfully.', { appearance: 'success', autoDismiss: true, });
+      } else {
+          addToast('Post Delete Error', { appearance: 'error', autoDismiss: true, });
+      }
     }
     postItem.status = true;
     postItem.approved_by = user._id;
-    dispatch(updatePost({ ...postItem }));
+    const res = await dispatch(updatePost({ ...postItem }));
+    if(res.status === 200){
+      addToast('Post Approved Successfully.', { appearance: 'success', autoDismiss: true, });
+    } else {
+        addToast('Post Update Error', { appearance: 'error', autoDismiss: true, });
+    }
   };
-  const handleReject = (post) => {
+  const handleReject = async (post) => {
     let postItem = { ...post };
     postItem.status = false;
     if(postItem.isDeleted){
@@ -41,7 +52,12 @@ function AdminPanel() {
     } 
      
     postItem.approved_by = user._id;
-    dispatch(updatePost({ ...postItem }));
+    const res = await dispatch(updatePost({ ...postItem }));
+    if(res.status === 200){
+      addToast('Post Rejected Successfully.', { appearance: 'success', autoDismiss: true, });
+    } else {
+        addToast('Post Update Error', { appearance: 'error', autoDismiss: true, });
+    }
   };
 
   useEffect(()=>{

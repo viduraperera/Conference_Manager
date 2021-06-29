@@ -26,13 +26,14 @@ function Posts({ post, handleApprove, handleReject }) {
 
       {user?.role === ROLES.USER.RESEARCHER ? ( //TODO: Update this to editor
         <div className="col">
+          <ViewPost post={post} />
+          <hr />
           <button type="button" className="btn btn-outline-success m-2" onClick={() => handleApprove(post)}>
             Approve
           </button>
           <button type="button" className="btn btn-outline-danger" onClick={() => handleReject(post)}>
             Reject
           </button>
-          <ViewPost post={post} />
         </div>
       ) : (
         ''

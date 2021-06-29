@@ -20,6 +20,7 @@ import CreateResearchForm from './src/components/createReasearch/CreateResearchF
 import ApprovedResearchPapers from './src/components/reviewer/ApprovedReseachPapers';
 import NewResearchPapers from './src/components/reviewer/NewResearchPapers';
 import ViewResearchPaper from './src/components/reviewer/ViewResearchPaper';
+import ReviewPanel from './src/components/review/ReviewPanel';
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
             <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
             <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
             <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
+            <Route path={'/review'} exact component={ReviewPanel} />
           </Switch>
         </ToastProvider>
         <Footer/>
