@@ -26,9 +26,9 @@ const Research = () =>{
                             <p>Ready to beyond the starter template? Check out these open source projects that you can
                                 quickly duplicate to a new GitHub repository.</p>
                             <ul className="icon-list">
-                                <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener"
-                                       target="_blank">Bootstrap npm starter</a></li>
-                                <li className="text-muted">Bootstrap Parcel starter (coming soon!)</li>
+                                <a href="/approvedResearch">
+                                    <button type="button" className="btn btn-info">Show Research</button>
+                                </a>
                             </ul>
                         </div>
 
@@ -37,11 +37,9 @@ const Research = () =>{
                             <p>Read more detailed instructions and documentation on using or contributing to
                                 Bootstrap.</p>
                             <ul className="icon-list">
-                                <li><a href="/docs/5.0/getting-started/introduction/">Bootstrap quick start guide</a>
-                                </li>
-                                <li><a href="/docs/5.0/getting-started/webpack/">Bootstrap Webpack guide</a></li>
-                                <li><a href="/docs/5.0/getting-started/parcel/">Bootstrap Parcel guide</a></li>
-                                <li><a href="/docs/5.0/getting-started/build-tools/">Contributing to Bootstrap</a></li>
+                                    <a href="/call_for_research_papers">
+                                        <button type="button" className="btn btn-info">How to Submit your papers</button>
+                                    </a>
                             </ul>
                         </div>
                     </div>

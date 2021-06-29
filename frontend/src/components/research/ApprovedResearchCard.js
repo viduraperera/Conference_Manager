@@ -1,18 +1,20 @@
 import React from "react";
+import research_paper from "../../../images/Paper.png"
+import "./reserach.css"
 
 const ApprovedResearchCard = ({research}) =>{
     console.log(research)
     return(
-        <div className={"col-md-6 dg-dark jumbotron"}>
-            <div className="card h-100 p-5 dg-dark rounded-3">
-                <div className="card-body dg-dark">
+        <div className="card">
+            <img src={research_paper} className="card-img-top" alt="..."/>
+                <div className="card-body">
                     <h5 className="card-title">{research.title}</h5>
                     <p className="card-text">{research.description}</p>
-                    <a href= {`http://localhost:5000/${research.path}`}>link</a>
+                    <a href={`http://localhost:5000/${research.path}`} className="btn btn-primary">Click To Download</a>
                 </div>
-            </div>
         </div>
     )
 }
 
 export default ApprovedResearchCard;
+

@@ -3,12 +3,6 @@ import ModelPopup from "../../modelPopup/modelPopup";
 
 const Workshop = () =>{
 
-    const modelRef = useRef();
-
-    const openModel = () =>{
-        console.log(modelRef.current)
-        modelRef.current.openModel();
-    }
 
     return(
         <div className="container py-4">
@@ -32,19 +26,11 @@ const Workshop = () =>{
                         <h2>Want To Be a Part of the Conference:</h2>
                         <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron
                             look. Then, mix and match with additional component themes and more.</p>
-                            <button onClick={openModel} className="btn btn-outline-light" type="button">
+                        <a href="/createWorkshop">
+                            <button className="btn btn-outline-light" type="button">
                                 Add you Proposal Now
                             </button>
-                        <ModelPopup ref={modelRef}>
-                            <h1>Model Header</h1>
-                            <p>hello</p>
-                            <button onClick={() => modelRef.current.close()}>
-                                Close
-                            </button>
-                            <a href="/createWorkshop">
-                                <button>open</button>
-                            </a>
-                        </ModelPopup>
+                        </a>
                     </div>
                 </div>
                 <div className="col-md-6">

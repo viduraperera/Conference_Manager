@@ -80,16 +80,9 @@ const CreateWorkshopFrom = ({setIsCreated}) =>{
                         />
                     </div>
                 </div>
-                <button className="btn btn-primary" onClick={openModel}>
+                <button className="btn btn-primary" data-testid={"submit-button"} onClick={handleSubmit}>
                     Submit
                 </button>
-                <ModelPopup ref={modelRef}>
-                    <h1>Model Header</h1>
-                    <p>hello</p>
-                    <button onClick={() => modelRef.current.close()}>
-                        Close
-                    </button>
-                </ModelPopup>
             </form>
         </div>
     )
