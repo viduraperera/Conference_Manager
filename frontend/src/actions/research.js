@@ -18,10 +18,12 @@ export const getResearch = () => async (dispatch) =>{
 export const createResearch = (research) => async (dispatch) =>{
 
     try{
-        const {data} = await api.createResearch(research);
-        dispatch({type: CREATE_RESEARCH, payload:data});
+        const res = await api.createResearch(research);
+        dispatch({type: CREATE_RESEARCH, payload:res.data});
+        return {...res}
     }catch (error){
         console.log("creating research" + error)
+        return {...error}
     }
 }
 

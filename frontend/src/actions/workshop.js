@@ -19,10 +19,12 @@ export const createWorkshops = (workshop) => async (dispatch) =>{
 
     try {
         console.log(workshop);
-        const { data } = await api.createWorkshop(workshop);
-        dispatch ({type: CREATE_WORKSHOP, payload: data})
+        const res = await api.createWorkshop(workshop);
+        dispatch ({type: CREATE_WORKSHOP, payload: res.data})
+        return {...res}
     }catch (error){
         console.log("creating workshop" + error);
+        return {...error}
     }
 }
 
