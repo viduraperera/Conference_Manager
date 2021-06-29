@@ -16,7 +16,7 @@ function EditorPosts() {
     dispatch(getPosts());
     dispatch(getUser());
   }, []);
-  const postId = location.pathname.split('/')[1];
+  const type = location.pathname.split('/')[1];
 
   const posts = useSelector((state) => state.post);
   const user = useSelector((state) => state.auth.user);
@@ -27,9 +27,9 @@ function EditorPosts() {
   },[posts])
 
   if(user?.role === ROLES.USER.RESEARCHER){
-    keynotes = posts?.posts?.filter((post) => post.category === postId);
+    keynotes = posts?.posts?.filter((post) => post.category === type);
   }else{
-    keynotes = posts?.posts?.filter((post) => post.category === postId && !post.isDeleted && post.approved_by && post.status);
+    keynotes = posts?.posts?.filter((post) => post.category === type && !post.isDeleted && post.approved_by && post.status);
   }
 
   const handleDelete = (post) => {

@@ -44,7 +44,8 @@ const App = () => {
             <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
             <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
             <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
-            <Route path={'/review'} exact component={ReviewPanel} />
+            <Route path={'/reviewResearch'} exact component={ReviewPanel} />
+            <Route path={'/reviewWorkshop'} exact component={ReviewPanel} />
           </Switch>
         </ToastProvider>
         <Footer/>
