@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { useToasts } from 'react-toast-notifications';
 
 import { login as loginUser } from '../../actions/auth';
-import ToastMessage from '../common/ToastMessage';
 
 export default function Login() {
+  const history = useHistory();
+  const { addToast } = useToasts();
+
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const [logError, setLogError] = useState(false)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    setEmailError(false);
-    setPasswordError(false);
+
     if (email && password) {
-      const res = await dispatch(loginUser({ email, password }))
-      console.log(res);
+      const res = await dispatch(loginUser({ email, password }));
+      if(res.status === 200){
+        addToast('Logged in  Successfully', { appearance: 'success', autoDismiss: true, });
+        history.push('/')
+      } else {
+        addToast('Login Error', { appearance: 'error', autoDismiss: true, });
+      }
+      setEmail('')
+      setPassword('')
     } else {
       handleErrors();
     }
@@ -37,7 +45,6 @@ export default function Login() {
 
   return (
     <div className="container">
-      {showToast ? <ToastMessage/>: ''}
       <div className="card" style={{ marginTop: 25 }}>
         <div className="card-body">
           <h2 className="card-title">Login</h2>

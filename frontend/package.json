@@ -27,6 +27,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-select": "^4.3.1",
+    "react-toast-notifications": "^2.4.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   }
