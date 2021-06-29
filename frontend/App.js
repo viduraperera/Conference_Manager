@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
 
 import NavBar from './src/components/navBar/NavBar';
-
-
-
 import Footer from "./src/components/footer/footer";
 import ApprovedWorkshop from "./src/components/workshop/ApprovedWorkshop";
 import CreateWorkshop from './src/components/createWorkshop/CreateWorkshop';
@@ -20,35 +18,41 @@ import PostEditor from './src/components/editor/PostEditor';
 import EditorPosts from './src/components/EditorPost/EditorPosts';
 import AdminPanel from './src/components/admin/AdminPanel';
 import Payment from './src/components/payment/Payment';
+import CreateResearchForm from './src/components/createReasearch/CreateResearchForm';
 
 import ApprovedResearchPapers from './src/components/reviewer/ApprovedReseachPapers';
 import NewResearchPapers from './src/components/reviewer/NewResearchPapers';
 import ViewResearchPaper from './src/components/reviewer/ViewResearchPaper';
+import ReviewPanel from './src/components/review/ReviewPanel';
+import NotFound from './src/common/NotFound';
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <NavBar />
-
-        <Switch>
-          <Route path={'/'} exact component={Home}></Route>
-          <ProtectedRoute path={'/createWorkshop'} exact component={CreateWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
-          <ProtectedRoute path={'/createResearch'} exact component={CreateResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
-          <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
-          <ProtectedRoute path={'/approvedResearch'} exact component={ApprovedResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
-          <Route path={'/register'} exact component={Register} />
-          <Route path={'/login'} exact component={Login} />
-          <Route path={'/editor'} component={PostEditor} />
-          <Route path={'/keynote'} exact component={EditorPosts} />
-          <Route path={'/call_for_research_papers'} exact component={EditorPosts} />
-          <Route path={'/call_for_workshops'} exact component={EditorPosts} />
-          <Route path={'/admin'} exact component={AdminPanel} />
-          <Route path={'/payment'} exact component={Payment} />
-          <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
-          <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
-          <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
-        </Switch>
+        <ToastProvider>
+          <Switch>
+            <Route path={'/'} exact component={Home}></Route>
+            <ProtectedRoute path={'/createWorkshop'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
+            <ProtectedRoute path={'/createResearch'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
+            <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
+            <Route path={'/register'} exact component={Register} />
+            <Route path={'/login'} exact component={Login} />
+            <Route path={'/editor'} component={PostEditor} />
+            <Route path={'/keynote'} exact component={EditorPosts} />
+            <Route path={'/call_for_research_papers'} exact component={EditorPosts} />
+            <Route path={'/call_for_workshops'} exact component={EditorPosts} />
+            <Route path={'/admin'} exact component={AdminPanel} />
+            <Route path={'/payment'} exact component={Payment} />
+            <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
+            <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
+            <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
+            <Route path={'/reviewResearch'} exact component={ReviewPanel} />
+            <Route path={'/reviewWorkshop'} exact component={ReviewPanel} />
+            <Route path="" component={NotFound} />
+          </Switch>
+        </ToastProvider>
         <Footer/>
       </BrowserRouter>
     </div>

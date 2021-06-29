@@ -4,13 +4,16 @@ import 'react-quill/dist/quill.snow.css';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../../actions/post';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { getUser } from '../../actions/auth';
 import { getPost, updatePost } from '../../actions/post';
 
 const PostEditor = () => {
+  const { addToast } = useToasts();
   let location = useLocation();
+  let history = useHistory();
   const dispatch = useDispatch();
 
   const [convertedText, setConvertedText] = useState('Create your post...');
@@ -48,7 +51,7 @@ const PostEditor = () => {
     }
   }, [postState]);
 
-  const handleSave = () => {
+  const handleSave = async() => {
     if (title && category) {
       let postItem = {
         _id: post?._id,
@@ -59,12 +62,23 @@ const PostEditor = () => {
         isDeleted: false,
         status: post?.status,
       };
-      console.log(postItem);
+
       if (post) {
         postItem.status = false;
-        dispatch(updatePost({ ...postItem }));
+        const res = await dispatch(updatePost({ ...postItem }));
+        if (res.status === 200){
+          addToast('Post Updated  Successfully', { appearance: 'success', autoDismiss: true, });
+          history.goBack()
+        } else {
+          addToast('An Error Occurred', { appearance: 'error', autoDismiss: true, });
+        }
       } else {
-        dispatch(createPost({ ...postItem }));
+        const res = await dispatch(createPost({ ...postItem }));
+        if(res.status === 200){
+          addToast('Post Created  Successfully', { appearance: 'success', autoDismiss: true, });
+        }else {
+          addToast('An Error Occurred', { appearance: 'error', autoDismiss: true, });
+        }
       }
     } else {
       handleErrors();

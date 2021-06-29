@@ -1,16 +1,9 @@
 import React, {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {createWorkshops} from "../../actions/workshop"
-import ModelPopup from "../modelPopup/modelPopup";
 
 const CreateWorkshopFrom = ({setIsCreated}) =>{
 
-    const modelRef = useRef();
-
-    const openModel = () =>{
-        console.log(modelRef.current)
-        modelRef.current.openModel();
-    }
 
     const [workshopData, setWorkshopData] = useState({
         title:'',

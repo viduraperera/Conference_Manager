@@ -31,17 +31,21 @@ export const getPost = (postId) => async (dispatch) => {
 
 export const updatePost = (post) => async (dispatch) => {
   try {
-    const { data } = await api.updatePost(post);
+    const res = await api.updatePost(post);
     getPosts();
+    return {...res}
   } catch (error) {
     console.error(error);
+    return {...error}
   }
 };
 export const deletePost = (postId) => async (dispatch) => {
   try {
-    const { data } = await api.deletePost(postId);
+    const res = await api.deletePost(postId);
+    return {...res}
     getPosts();
   } catch (error) {
     console.error(error);
+    return {...error}
   }
 };
