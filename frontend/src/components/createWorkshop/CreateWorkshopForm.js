@@ -1,8 +1,16 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {createWorkshops} from "../../actions/workshop"
+import ModelPopup from "../modelPopup/modelPopup";
 
 const CreateWorkshopFrom = ({setIsCreated}) =>{
+
+    const modelRef = useRef();
+
+    const openModel = () =>{
+        console.log(modelRef.current)
+        modelRef.current.openModel();
+    }
 
     const [workshopData, setWorkshopData] = useState({
         title:'',
@@ -72,9 +80,16 @@ const CreateWorkshopFrom = ({setIsCreated}) =>{
                         />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+                <button className="btn btn-primary" onClick={openModel}>
                     Submit
                 </button>
+                <ModelPopup ref={modelRef}>
+                    <h1>Model Header</h1>
+                    <p>hello</p>
+                    <button onClick={() => modelRef.current.close()}>
+                        Close
+                    </button>
+                </ModelPopup>
             </form>
         </div>
     )
