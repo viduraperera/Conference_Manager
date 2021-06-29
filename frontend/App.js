@@ -17,6 +17,10 @@ import AdminPanel from './src/components/admin/AdminPanel';
 import Payment from './src/components/payment/Payment';
 import CreateResearchForm from './src/components/createReasearch/CreateResearchForm';
 
+import ApprovedResearchPapers from './src/components/reviewer/ApprovedReseachPapers';
+import NewResearchPapers from './src/components/reviewer/NewResearchPapers';
+import ViewResearchPaper from './src/components/reviewer/ViewResearchPaper';
+
 const App = () => {
   return (
     <div>
@@ -36,6 +40,9 @@ const App = () => {
             <Route path={'/call_for_workshops'} exact component={EditorPosts} />
             <Route path={'/admin'} exact component={AdminPanel} />
             <Route path={'/payment'} exact component={Payment} />
+            <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
+            <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
+            <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
           </Switch>
         </ToastProvider>
         <Footer/>

@@ -36,3 +36,8 @@ export const deletePost = (postId) => API.delete(`/post/${postId}`);
 
 //Payment
 export const payment = (pay) => API.post('payment', pay);
+
+//Reviewer
+export const approvedResearchPapers = () => API.get('/reviever/approvedResearchPapers');
+export const newResearchPapers = () => API.get('/reviever/newResearchPapers');
+export const viewResearchPaper = (id) => API.get(`/reviever/${id}`);
