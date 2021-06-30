@@ -59,7 +59,7 @@ const CreateResearchForm = () =>{
     return(
         <div className={"container"}>
             <h1 className="display-5 text-center my-5">Upload your {path === 'createResearch'? 'Research' : 'Workshop'} Data</h1>
-            <form className="rounded border p-5 bg-light w-75 d-flex flex-column mx-auto">
+            <form className="rounded border p-5 bg-light w-75 d-flex flex-column mx-auto mb-4">
                 <div className="row">
                     <div className="mb-3 col">
                         <label htmlFor="titleLabel" className="form-label">
@@ -103,6 +103,11 @@ const CreateResearchForm = () =>{
                     Submit
                 </button>
             </form>
+                <div className="p-5 bg-light rounded-3">
+                    <h1>Research and Workshop Proposal Template</h1>
+                    <p className="lead">Note that the proposals and research paper should be drafted as the template that been provided. Click the below button to download the template</p>
+                    <a className="btn btn-lg btn-primary" href={"../../../public/researchPaperTemplete/Template.zip"} role="button">Download from here >></a>
+                </div>
         </div>
     )
 }

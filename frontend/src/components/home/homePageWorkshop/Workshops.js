@@ -1,8 +1,5 @@
-import React, {useEffect, useState} from "react";
-
-
-
-
+import React, {useRef} from "react";
+import ModelPopup from "../../modelPopup/modelPopup";
 
 const Workshop = () =>{
 
@@ -30,7 +27,9 @@ const Workshop = () =>{
                         <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron
                             look. Then, mix and match with additional component themes and more.</p>
                         <a href="/createWorkshop">
-                            <button className="btn btn-outline-light" type="button">Add you Proposal Now</button>
+                            <button className="btn btn-outline-light" type="button">
+                                Add you Proposal Now
+                            </button>
                         </a>
                     </div>
                 </div>

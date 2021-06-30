@@ -9,6 +9,8 @@ import Home from './src/components/home/Home';
 import Register from './src/components/auth/Register';
 import Login from './src/components/auth/Login';
 
+//import ApprovedResearch from "./src/components/research/ApprovedResearch";
+
 import { ProtectedRoute } from './src/components/auth/ProtectedRoute';
 import { ROLES } from './src/constants/constants';
 import PostEditor from './src/components/editor/PostEditor';
@@ -17,9 +19,9 @@ import AdminPanel from './src/components/admin/AdminPanel';
 import Payment from './src/components/payment/Payment';
 import CreateResearchForm from './src/components/createReasearch/CreateResearchForm';
 
-import ApprovedResearchPapers from './src/components/reviewer/ApprovedReseachPapers';
-import NewResearchPapers from './src/components/reviewer/NewResearchPapers';
-import ViewResearchPaper from './src/components/reviewer/ViewResearchPaper';
+// import ApprovedResearchPapers from './src/components/reviewer/ApprovedReseachPapers';
+// import NewResearchPapers from './src/components/reviewer/NewResearchPapers';
+// import ViewResearchPaper from './src/components/reviewer/ViewResearchPaper';
 import ReviewPanel from './src/components/review/ReviewPanel';
 import NotFound from './src/common/NotFound';
 
@@ -42,9 +44,6 @@ const App = () => {
             <Route path={'/call_for_workshops'} exact component={EditorPosts} />
             <Route path={'/admin'} exact component={AdminPanel} />
             <Route path={'/payment'} exact component={Payment} />
-            <Route path={'/approvedResearchPapers'} exact component={ApprovedResearchPapers} />
-            <Route path={'/newResearchPapers'} exact component={NewResearchPapers} />
-            <Route path={'/viewResearchPaper'} exact component={ViewResearchPaper} />
             <Route path={'/reviewResearch'} exact component={ReviewPanel} />
             <Route path={'/reviewWorkshop'} exact component={ReviewPanel} />
             <Route path="" component={NotFound} />
