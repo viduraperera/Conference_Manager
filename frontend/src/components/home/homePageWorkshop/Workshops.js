@@ -1,5 +1,4 @@
-import React, {useRef} from "react";
-import ModelPopup from "../../modelPopup/modelPopup";
+import React from "react";
 
 const Workshop = () =>{
 

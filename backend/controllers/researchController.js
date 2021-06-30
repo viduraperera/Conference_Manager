@@ -1,5 +1,6 @@
 import express from 'express';
 import Research from '../Models/Research.js';
+import sendMail from '../Utils/util.js'
 
 const router = express.Router();
 
@@ -55,9 +56,16 @@ export const createResearch = async (req, res) => {
 
 export const updateResearch = async (req, res) => {
   try {
-    const check = await Research.findById({ _id: req.params.id });
+    const check = await Research.findById({ _id: req.params.id }).populate('user');
     if (!check) return res.status(404).send('Research not found');
     await Research.updateOne({ _id: req.params.id }, req.body);
+
+    if(!check.status && req.body.status){
+      sendMail('Research was approved', check.user.email)
+    }else if (check.status && !req.body.status){
+      sendMail('Research was rejected', check.user.email)
+    }
+    
     return res.status(200).send('Research Updated');
   } catch (error) {
     return res.status(500).send(error);
