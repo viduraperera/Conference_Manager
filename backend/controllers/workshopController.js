@@ -58,9 +58,15 @@ export const createWorkshop = async (req, res) => {
 
 export const updateWorkshop = async (req, res) => {
   try {
-    const check = await Workshop.findById({ _id: req.params.id });
+    const check = await Workshop.findById({ _id: req.params.id }).populate('conductor');
     if (!check) return res.status(404).send('Workshop not found');
     await Workshop.updateOne({ _id: req.params.id }, req.body);
+    
+    if(!check.status && req.body.status){
+      sendMail('Workshop was approved', check.conductor.email)
+    }else if (check.status && !req.body.status){
+      sendMail('Workshop was rejected', check.conductor.email)
+    }
     return res.status(200).send('Conference Updated');
   } catch (error) {
     return res.status(500).send(error);

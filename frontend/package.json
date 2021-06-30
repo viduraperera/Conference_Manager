@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html",
     "test": "jest --watchAll"
   },
   "keywords": [],

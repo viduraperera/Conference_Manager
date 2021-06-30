@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ROLES } from '../../constants/constants';
+import { logout } from '../../actions/auth';
+import { useToasts } from 'react-toast-notifications';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
+
+  const user = useSelector((state)=> state.auth.user);
+
+  const onLogout = ()=> {
+    dispatch(logout())
+    addToast('Logged Out  Successfully', { appearance: 'success', autoDismiss: true, });
+  }
 
   //style object
   const Logo = {
@@ -70,28 +83,76 @@ const NavBar = () => {
                         Create Research Paper
                       </Link>
                     </li>
+                  ) : ''}
+                  { user ? 
+                  (
                     <li>
                       <Link className="dropdown-item" to="/approvedResearch">
                         View Approved Research Papers
                       </Link>
+                  </li>
+                  ): ''}
+                </ul>
+              </li>
+              { user?.role === ROLES.ADMIN ? 
+              (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/admin">
+                      Admin Panel
+                    </Link>
+              </li>
+              ): ''}
+              { user?.role === ROLES.EDITOR ? 
+              (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/editor">
+                      Add Post
+                    </Link>
+              </li>
+              ): ''}
+              { user?.role === ROLES.REVIEWER || user?.role === ROLES.ADMIN ? 
+              (
+                <>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/reviewResearch">
+                        Review Research Papers
+                      </Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/reviewWorkshop">
+                        Review Workshops
+                      </Link>
+                  </li>
+                </>
+              ): ''}
+              
+              { !user ? 
+              (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/register">
+                        Register To Conference
+                      </Link>
                     </li>
-                  </ul>
-                </li>
+                    <li className="nav-item">
+                      <Link className="nav-link text-white" to="/login">
+                        Login
+                      </Link>
+                    </li>
+                </>
+              ): 
+              (
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/register">
-                    Register To Conference
+                  <Link className="nav-link text-white" onClick={onLogout}>
+                    Logout
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/login">
-                    Login
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              )}
+            </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 

@@ -36,9 +36,9 @@ const App = () => {
           <NavBar />
           <Switch>
             <Route path={'/'} exact component={Home}></Route>
-            <ProtectedRoute path={'/createWorkshop'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER]}/>
-            <ProtectedRoute path={'/createResearch'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.RESEARCHER]} />
-            <ProtectedRoute path={'/approvedResearch'} exact component={ApprovedResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]} />
+            <ProtectedRoute path={'/createWorkshop'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.EDITOR, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER]}/>
+            <ProtectedRoute path={'/createResearch'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.EDITOR, ROLES.REVIEWER, ROLES.USER.RESEARCHER]} />
+            <ProtectedRoute path={'/approvedResearch'} exact component={ApprovedResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.EDITOR, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]} />
             <Route path={'/approvedWorkshops'} exact component={ApprovedWorkshop}/>
             <Route path={'/register'} exact component={Register} />
             <Route path={'/login'} exact component={Login} />
