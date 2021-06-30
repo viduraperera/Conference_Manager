@@ -30,9 +30,9 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/">
+                <Link className="nav-link" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,14 +40,14 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <a className="dropdown-item" href="/createWorkshop">
+                    <Link className="dropdown-item" to="/createWorkshop">
                       Create WorkShop
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/approvedWorkshops">
+                    <Link className="dropdown-item" to="/approvedWorkshops">
                       View Approved Workshops
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -57,14 +57,14 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <a className="dropdown-item" href="/createResearch">
+                    <Link className="dropdown-item" to="/createResearch">
                       Create Research Paper
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/approvedResearch">
+                    <Link className="dropdown-item" to="/approvedResearch">
                       View Approved Research Papers
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
