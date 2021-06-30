@@ -23,3 +23,4 @@ export const ROLES = {
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const PAY = 'PAY'
+export const FETCH_PAY = 'FETCH_PAY'

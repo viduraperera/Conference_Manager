@@ -1,29 +1,66 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import {getUser} from '../../actions/auth'
-import { makePayment } from '../../actions/payment';
+import { makePayment, fetchPayment } from '../../actions/payment';
+import { ROLES } from '../../constants/constants';
+import { useToasts } from 'react-toast-notifications';
+import { useHistory } from 'react-router';
 
 function Payment() {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const { addToast } = useToasts();
 
     useEffect(()=>{
-        dispatch(getUser())
+        dispatch(getUser());
+        dispatch(fetchPayment());
     }, [])
+
     const user = useSelector((state) => state.auth.user);
+
+    const payment = useSelector((state)=> state.payment.payments);
+
+    useEffect(()=>{
+        const data = payment?.filter((item)=> item.user._id == user?._id)
+        if(data?.length){
+            history.push('/');
+        }
+    },[payment])
 
     const [cardNumber, setCardNumber] = useState('')
     const [accountHolder, setAccountHolder] = useState('')
     const [amount, setAmount] = useState(1000)
     const [cardNumberError, setCardNumberError] = useState('')
     const [accountHolderError, setAccountHolderError] = useState('')
-    const handleSubmit = (e) => {
+    const [title, setTitle] = useState('')
+
+    useEffect(()=>{
+        setTitle('One Time Attendee Payment')
+        if(user?.role === ROLES.USER.ATTENDEE) {
+            setAmount(1000);
+        } else if (user?.role === ROLES.USER.RESEARCHER) {
+            setAmount(1500);
+            setTitle('One Time Researcher Proposal Payment')
+        }
+    },[user])
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if(cardNumber && accountHolder && amount){
             const pay = {
                 user: user._id,
                 amount
             }
-            dispatch(makePayment(pay))
+            const res = await dispatch(makePayment(pay))
+            console.log(res);
+            if(res.status === 201){
+                addToast('Payment Successful.', { appearance: 'success', autoDismiss: true, });
+                history.push('/');
+            } else {
+                setCardNumber('')
+                setAccountHolder('')
+                addToast('Payment Error', { appearance: 'error', autoDismiss: true, });
+            }
         }else {
             handleError();
         }
@@ -39,7 +76,7 @@ function Payment() {
     }
     return (
         <div className="container">
-            <h2>One Time Attendee Payment</h2>
+            <h2 className="text-center">{title}</h2>
             <div className="card my-3">
                 <div className="card-body">
                     <h2 className="card-title text-center">
