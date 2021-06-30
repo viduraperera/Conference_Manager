@@ -52,6 +52,11 @@ const NavBar = () => {
                   Workshops
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                    <Link className="dropdown-item" to="/call_for_workshops">
+                      Call For Workshop
+                    </Link>
+                  </li>
                   <li>
                     { user?.role !== ROLES.USER.ATTENDEE && user?.role !== ROLES.USER.RESEARCHER && user ? 
                     (
@@ -63,11 +68,6 @@ const NavBar = () => {
                   <li>
                     <Link className="dropdown-item" to="/approvedWorkshops">
                       Workshops
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/call_for_workshops">
-                      Call For Workshop
                     </Link>
                   </li>
                 </ul>
@@ -102,11 +102,18 @@ const NavBar = () => {
               </li>
               { user?.role === ROLES.ADMIN ? 
               (
-                <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                      Admin Panel
-                    </Link>
-              </li>
+                <>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/admin">
+                        Admin Panel
+                      </Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/register">
+                        Register System Users
+                      </Link>
+                  </li>
+                </>
               ): ''}
               { user?.role === ROLES.EDITOR ? 
               (

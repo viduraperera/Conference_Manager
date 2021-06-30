@@ -15,7 +15,7 @@ function EditorPost({ post, handleUpdate, handleDelete }) {
   return (
     <div className="container">
       <div className="text-left">{parser(post?.description)}</div>
-      {user?.role === ROLES.USER.RESEARCHER ? ( //TODO: Update this to editor
+      {user?.role === ROLES.EDITOR ? ( //TODO: Update this to editor
         <>
           <div className="row">
             <div className="col-md-2">
