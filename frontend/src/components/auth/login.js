@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import { useToasts } from 'react-toast-notifications';
 
 import { login as loginUser } from '../../actions/auth';
+import { ROLES } from '../../constants/constants';
 
 export default function Login() {
   const history = useHistory();
@@ -22,7 +23,11 @@ export default function Login() {
       const res = await dispatch(loginUser({ email, password }));
       if(res.status === 200){
         addToast('Logged in  Successfully', { appearance: 'success', autoDismiss: true, });
-        history.push('/')
+        if(res?.data?.payload?.user?.role === ROLES.USER.ATTENDEE){
+          history.push('/payment')
+        }else {
+          history.push('/')
+        }
       } else {
         addToast('Login Error', { appearance: 'error', autoDismiss: true, });
       }

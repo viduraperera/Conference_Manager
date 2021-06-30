@@ -14,7 +14,6 @@ export const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
         if (roles && roles.indexOf(user?.role) === -1) {
           return <Redirect to={{ pathname: '/' }} />;
         }
-        console.log(roles.indexOf(user?.role));
 
         return <Component {...props} />;
       }}

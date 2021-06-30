@@ -35,9 +35,10 @@ export const updatePost = (post) => API.patch(`/post/${post._id}`, post);
 export const deletePost = (postId) => API.delete(`/post/${postId}`);
 
 //Payment
-export const payment = (pay) => API.post('payment', pay);
+export const payment = (pay) => API.post('/payment', pay);
+export const getPayment = () => API.get('/payment');
 
 //Reviewer
-export const approvedResearchPapers = () => API.get('/reviever/approvedResearchPapers');
-export const newResearchPapers = () => API.get('/reviever/newResearchPapers');
-export const viewResearchPaper = (id) => API.get(`/reviever/${id}`);
+// export const approvedResearchPapers = () => API.get('/reviever/approvedResearchPapers');
+// export const newResearchPapers = () => API.get('/reviever/newResearchPapers');
+// export const viewResearchPaper = (id) => API.get(`/reviever/${id}`);

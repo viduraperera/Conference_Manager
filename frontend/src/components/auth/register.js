@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
+import { useToasts } from 'react-toast-notifications';
+import { useHistory } from 'react-router';
 
 import { getUser, register as registerUser } from '../../actions/auth';
 
 export default function Register() {
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
+  const history = useHistory();
 
   useEffect(()=>{
     dispatch(getUser())
@@ -44,15 +48,25 @@ export default function Register() {
   const [contactNoError, setContactNoError] = useState(false);
   const [roleError, setRoleError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setNameError(false);
-    setEmailError(false);
-    setPasswordError(false);
-    setContactNoError(false);
-    setRoleError(false);
     if (user.name && user.email && user.password && user.contactNo && user.role && user.password === rePassword) {
-      dispatch(registerUser({ ...user }));
+      const res = await dispatch(registerUser({ ...user }));
+      if(res.status === 200){
+        addToast('Registered Successfully', { appearance: 'success', autoDismiss: true, });
+        history.push('/login')
+      } else if(res.response.status === 409){
+        addToast('User already exits. Please Login', { appearance: 'error', autoDismiss: true, });
+      } else {
+        addToast('Register Error', { appearance: 'error', autoDismiss: true, });
+      }
+      setUser({
+        name: '',
+        email: '',
+        password: '',
+        contactNo: '',
+        role: '',
+      })
     } else {
       handleErrors();
     }
