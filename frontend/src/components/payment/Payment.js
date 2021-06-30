@@ -76,7 +76,7 @@ function Payment() {
     return (
         <div className="container">
             <h2 className="text-center">{title}</h2>
-            <div className="card my-3">
+            <div className="card rounded border p-5 bg-light w-75 d-flex flex-column mx-auto">
                 <div className="card-body">
                     <h2 className="card-title text-center">
                         Payment Gateway

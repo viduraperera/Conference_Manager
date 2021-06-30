@@ -92,7 +92,7 @@ export default function Register() {
 
   return (
     <div className="container">
-      <div className="card" style={{ marginTop: 25 }}>
+      <div className="rounded border p-5 bg-light w-75 d-flex flex-column mx-auto" style={{ marginTop: 25 }}>
         <div className="card-body">
           <h2 className="card-title">Register { admin ? 'a System User' : ''}</h2>
           <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
