@@ -27,24 +27,24 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <NavBar />
         <ToastProvider>
+          <NavBar />
           <Switch>
             <Route path={'/'} exact component={Home}></Route>
-            <ProtectedRoute path={'/createWorkshop'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER, ROLES.USER.ATTENDEE]}></ProtectedRoute>
-            <ProtectedRoute path={'/createResearch'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
-            <ProtectedRoute path={'/approvedWorkshops'} exact component={ApprovedWorkshop} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
-            <ProtectedRoute path={'/approvedResearch'} exact component={ApprovedResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]}></ProtectedRoute>
+            <ProtectedRoute path={'/createWorkshop'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.WORKSHOP_PRESENTER]}/>
+            <ProtectedRoute path={'/createResearch'} exact component={CreateResearchForm} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.RESEARCHER]} />
+            <ProtectedRoute path={'/approvedResearch'} exact component={ApprovedResearch} roles={[ROLES.ADMIN, ROLES.REVIEWER, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER, ROLES.USER.WORKSHOP_PRESENTER]} />
+            <Route path={'/approvedWorkshops'} exact component={ApprovedWorkshop}/>
             <Route path={'/register'} exact component={Register} />
             <Route path={'/login'} exact component={Login} />
-            <Route path={'/editor'} component={PostEditor} />
+            <ProtectedRoute path={'/editor'} component={PostEditor} roles={ROLES.EDITOR} />
             <Route path={'/keynote'} exact component={EditorPosts} />
             <Route path={'/call_for_research_papers'} exact component={EditorPosts} />
             <Route path={'/call_for_workshops'} exact component={EditorPosts} />
-            <Route path={'/admin'} exact component={AdminPanel} />
-            <Route path={'/payment'} exact component={Payment} />
-            <Route path={'/reviewResearch'} exact component={ReviewPanel} />
-            <Route path={'/reviewWorkshop'} exact component={ReviewPanel} />
+            <ProtectedRoute path={'/admin'} exact component={AdminPanel} roles={ROLES.ADMIN} />
+            <ProtectedRoute path={'/payment'} exact component={Payment} roles={[ROLES.ADMIN, ROLES.USER.ATTENDEE, ROLES.USER.RESEARCHER]} />
+            <ProtectedRoute path={'/reviewResearch'} exact component={ReviewPanel} roles={[ROLES.REVIEWER, ROLES.ADMIN]} />
+            <ProtectedRoute path={'/reviewWorkshop'} exact component={ReviewPanel} roles={[ROLES.REVIEWER, ROLES.ADMIN]} />
             <Route path="" component={NotFound} />
           </Switch>
         </ToastProvider>

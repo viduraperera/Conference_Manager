@@ -27,13 +27,11 @@ const CreateResearchForm = () =>{
     const dispatch = useDispatch();
 
     const  handleFile = (e) =>{
-        console.log(e.target.files[0])
         setResearchData({...researchData, file: e.target.files[0]})
     }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(researchData.title);
         let formData = new FormData();
         formData.append('title', researchData.title)
         formData.append('description', researchData.description)

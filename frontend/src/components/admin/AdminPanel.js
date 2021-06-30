@@ -68,6 +68,7 @@ function AdminPanel() {
   return (
     <div className="container">
       <div className="row">
+        <h2 className="text-center">Editor Posts</h2>
         <div className="row m-2">
           <input className="form-control" type="text" placeholder='Search by Title or Category' value={search} onChange={(e)=>setSearch(e.target.value)} />
         </div>

@@ -52,7 +52,6 @@ function Payment() {
                 amount
             }
             const res = await dispatch(makePayment(pay))
-            console.log(res);
             if(res.status === 201){
                 addToast('Payment Successful.', { appearance: 'success', autoDismiss: true, });
                 history.push('/');

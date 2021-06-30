@@ -11,7 +11,6 @@ const AuthReducer = (state = { user: null }, action) => {
     case GET_USER:
       return { ...state, user: JSON.parse(localStorage.getItem('profile'))?.payload.user };
     case REGISTER:
-      console.log(action?.payload);
       return state;
     default:
       return state;

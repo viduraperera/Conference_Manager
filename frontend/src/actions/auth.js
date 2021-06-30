@@ -1,4 +1,4 @@
-import { GET_USER, LOGIN, REGISTER } from '../constants/constants';
+import { GET_USER, LOGIN, LOGOUT, REGISTER } from '../constants/constants';
 import * as api from '../api/index.js';
 
 //getting workshops
@@ -30,3 +30,11 @@ export const register = (user) => async (dispatch) => {
     return {...error}
   }
 };
+
+export const logout = () => (dispatch) => {
+  try {
+    dispatch({type: LOGOUT})
+  } catch (error) {
+    console.error(error);
+  }
+}

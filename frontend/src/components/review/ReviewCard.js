@@ -7,8 +7,8 @@ function ReviewCard({ post, handleApprove, handleReject }) {
             <div className="card-body">
                 <div className="card-text">
                     {post?.description} <br />
-                    <b>Status</b>: {post?.status ? <span class="badge bg-success">Approved</span> : <span class="badge bg-danger">Rejected</span>} <br />
-                    <b>Is Reviewed</b>: {post?.approved_by ? <span class="badge bg-success">Reviewed</span> : <span class="badge bg-danger">Not Reviewed</span>}
+                    <b>Status</b>: {post?.status ? <span className="badge bg-success">Approved</span> : <span className="badge bg-danger">Rejected</span>} <br />
+                    <b>Is Reviewed</b>: {post?.approved_by ? <span className="badge bg-success">Reviewed</span> : <span className="badge bg-danger">Not Reviewed</span>}
                 </div>
                 <a className="btn btn-outline-success my-2" href={`http://localhost:5000/${post?.path}`}>View File</a>
                 <hr />

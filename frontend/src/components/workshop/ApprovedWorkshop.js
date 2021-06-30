@@ -13,10 +13,8 @@ const ApprovedWorkshop = () =>{
     }, [dispatch])
 
     const workshops = useSelector( (state) => state.workshop.workshops);
-    console.log(workshops);
 
     const app_workshop = workshops?.filter(item => item.status == true);
-    console.log(app_workshop);
 
     // useEffect( ()=>{
     //     setfiller(workshops?.filter(item => item.status == true))

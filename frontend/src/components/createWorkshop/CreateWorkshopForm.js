@@ -16,18 +16,15 @@ const CreateWorkshopFrom = ({setIsCreated}) =>{
     const dispatch = useDispatch();
 
     const handleFile = (e) =>{
-        console.log(e.target.files[0])
         setWorkshopData({...workshopData, file: e.target.files[0]})
     }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(workshopData.title);
         let formData = new FormData();
         formData.append('title', workshopData.title);
         formData.append('description', workshopData.description);
         formData.append('file', workshopData.file);
-        console.log(formData.get('title'))
         dispatch(createWorkshops(formData));
         setIsCreated(true);
         setWorkshopData({title: '', description: '', file: ''})

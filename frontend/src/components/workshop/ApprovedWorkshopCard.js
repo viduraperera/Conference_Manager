@@ -1,7 +1,6 @@
 import React from "react";
 
 const ApprovedWorkshopCard = ({workshop}) =>{
-    console.log(workshop)
     return(
         <div className={"col-md-6 dg-dark jumbotron"}>
             <div className="card h-100 p-5 dg-dark rounded-3">
