@@ -107,7 +107,7 @@ const Footer = () =>{
                 </div>
             </div>
             <div className="footer-copyright text-center py-3 text-white bg-dark">© Created By:
-                <a className="text-decoration-none text-muted"  href="https://mdbootstrap.com/" style={FooterLinks}> Group 7</a>
+                <a className="text-decoration-none text-muted" style={FooterLinks}> Group 7</a>
             </div>
 
         </footer>

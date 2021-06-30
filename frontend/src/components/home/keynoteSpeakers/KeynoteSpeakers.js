@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import keynoteSpeaker from "../../../../images/keynoteImage.jpg"
 
 const KeynoteSpeakers = () =>{
@@ -12,9 +14,9 @@ const KeynoteSpeakers = () =>{
                         world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
                         responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                        <a href="/keynote">
+                        <Link to="/keynote">
                             <button type="button" className="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Show Keynote Speakers</button>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
