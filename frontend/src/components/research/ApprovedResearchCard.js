@@ -3,7 +3,6 @@ import research_paper from "../../../images/Paper.png"
 import "./reserach.css"
 
 const ApprovedResearchCard = ({research}) =>{
-    console.log(research)
     return(
         <div className="card">
             <img src={research_paper} className="card-img-top" alt="..."/>

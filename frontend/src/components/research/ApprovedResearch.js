@@ -14,7 +14,6 @@ const ApprovedResearch = () =>{
     }, [])
 
     const researches = useSelector( (state) => state.research.researches);
-    console.log(researches);
 
     const app_research = researches?.filter(item => item.status == true)
 

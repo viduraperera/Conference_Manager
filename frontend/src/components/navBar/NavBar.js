@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ROLES } from '../../constants/constants';
+import { logout } from '../../actions/auth';
+import { useToasts } from 'react-toast-notifications';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
+
+  const user = useSelector((state)=> state.auth.user);
+
+  const onLogout = ()=> {
+    dispatch(logout())
+    addToast('Logged Out  Successfully', { appearance: 'success', autoDismiss: true, });
+  }
 
   //style object
   const Logo = {
@@ -40,13 +53,21 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <Link className="dropdown-item" to="/createWorkshop">
-                      Create WorkShop
-                    </Link>
+                    { user?.role !== ROLES.USER.ATTENDEE && user?.role !== ROLES.USER.RESEARCHER && user ? 
+                    (
+                        <Link className="dropdown-item" to="/createWorkshop">
+                          Create WorkShop
+                        </Link>
+                    ) : ''}
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/approvedWorkshops">
-                      View Approved Workshops
+                      Workshops
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/call_for_workshops">
+                      Call For Workshop
                     </Link>
                   </li>
                 </ul>
@@ -57,27 +78,82 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <Link className="dropdown-item" to="/createResearch">
-                      Create Research Paper
-                    </Link>
+                      <Link className="dropdown-item" to="/call_for_research_papers">
+                        Call For Research Papers
+                      </Link>
                   </li>
-                  <li>
-                    <Link className="dropdown-item" to="/approvedResearch">
-                      View Approved Research Papers
-                    </Link>
+                  {user?.role !== ROLES.USER.ATTENDEE && user?.role !== ROLES.USER.WORKSHOP_PRESENTER && user ? 
+                  (
+                    <li>
+                      <Link className="dropdown-item" to="/createResearch">
+                        Create Research Paper
+                      </Link>
+                    </li>
+                  ) : ''}
+                  { user ? 
+                  (
+                    <li>
+                      <Link className="dropdown-item" to="/approvedResearch">
+                        Research Papers
+                      </Link>
                   </li>
+                  ): ''}
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Register To Conference
-                </Link>
+              { user?.role === ROLES.ADMIN ? 
+              (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/admin">
+                      Admin Panel
+                    </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
+              ): ''}
+              { user?.role === ROLES.EDITOR ? 
+              (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/editor">
+                      Add Post
+                    </Link>
               </li>
+              ): ''}
+              { user?.role === ROLES.REVIEWER || user?.role === ROLES.ADMIN ? 
+              (
+                <>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/reviewResearch">
+                        Review Research Papers
+                      </Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/reviewWorkshop">
+                        Review Workshops
+                      </Link>
+                  </li>
+                </>
+              ): ''}
+              
+              { !user ? 
+              (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/register">
+                        Register To Conference
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/login">
+                        Login
+                      </Link>
+                    </li>
+                </>
+              ): 
+              (
+                <li className="nav-item">
+                  <Link className="nav-link" onClick={onLogout}>
+                    Logout
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
