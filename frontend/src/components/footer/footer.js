@@ -76,16 +76,16 @@ const Footer = () =>{
 
                         <ul className="list-unstyled">
                             <li>
-                                <a className="text-white text-decoration-none" href="#" style={FooterLinks}>Workshops</a>
+                                <a className="text-white text-decoration-none" href="/createWorkshop" style={FooterLinks}>Workshops</a>
                             </li>
                             <li>
                                 <a className="text-white text-decoration-none" href="#!" style={FooterLinks}>Research</a>
                             </li>
                             <li>
-                                <a className="text-white text-decoration-none" href="#" style={FooterLinks}>Create Workshop</a>
+                                <a className="text-white text-decoration-none" href="/createWorkshop" style={FooterLinks}>Create Workshop</a>
                             </li>
                             <li>
-                                <a className="text-white text-decoration-none" href="#" style={FooterLinks}>Add Research</a>
+                                <a className="text-white text-decoration-none" href="/createResearch" style={FooterLinks}>Add Research</a>
                             </li>
                         </ul>
                     </div>
