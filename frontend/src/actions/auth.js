@@ -23,10 +23,10 @@ export const getUser = () => (dispatch) => {
 
 export const register = (user) => async (dispatch) => {
   try {
-    const data = await api.register(user);
-    console.log(data);
-    // dispatch({ type: REGISTER, payload: data });
+    const res = await api.register(user);
+    return {...res}
   } catch (error) {
     console.error(error);
+    return {...error}
   }
 };
