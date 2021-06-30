@@ -83,7 +83,6 @@ const NavBar = () => {
                         Create Research Paper
                       </Link>
                     </li>
-                  ) : ''}
                   { user ? 
                   (
                     <li>
@@ -97,7 +96,7 @@ const NavBar = () => {
               { user?.role === ROLES.ADMIN ? 
               (
                 <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
+                    <Link className="nav-link text-white" to="/admin">
                       Admin Panel
                     </Link>
               </li>
@@ -105,7 +104,7 @@ const NavBar = () => {
               { user?.role === ROLES.EDITOR ? 
               (
                 <li className="nav-item">
-                    <Link className="nav-link" to="/editor">
+                    <Link className="nav-link text-white" to="/editor">
                       Add Post
                     </Link>
               </li>
@@ -114,12 +113,12 @@ const NavBar = () => {
               (
                 <>
                   <li className="nav-item">
-                      <Link className="nav-link" to="/reviewResearch">
+                      <Link className="nav-link text-white" to="/reviewResearch">
                         Review Research Papers
                       </Link>
                   </li>
                   <li className="nav-item">
-                      <Link className="nav-link" to="/reviewWorkshop">
+                      <Link className="nav-link text-white" to="/reviewWorkshop">
                         Review Workshops
                       </Link>
                   </li>
@@ -130,7 +129,7 @@ const NavBar = () => {
               (
                   <>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/register">
+                      <Link className="nav-link text-white" to="/register">
                         Register To Conference
                       </Link>
                     </li>
