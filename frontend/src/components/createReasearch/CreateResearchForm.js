@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { createWorkshops } from "../../actions/workshop";
 import { getUser } from "../../actions/auth";
 import { useToasts } from 'react-toast-notifications';
+import {Link} from "react-router-dom";
+import download from "../../../public/researchPaperTemplete/Template.zip"
 
 const CreateResearchForm = () =>{
     const location = useLocation();
@@ -106,10 +108,12 @@ const CreateResearchForm = () =>{
                 <div className="p-5 bg-light rounded-3">
                     <h1>Research and Workshop Proposal Template</h1>
                     <p className="lead">Note that the proposals and research paper should be drafted as the template that been provided. Click the below button to download the template</p>
-                    <a className="btn btn-lg btn-primary" href={"../../../public/researchPaperTemplete/Template.zip"} role="button">Download from here >></a>
+                    <a className="btn btn-lg btn-primary" href={download} role="button">Download from here >></a>
                 </div>
         </div>
     )
 }
 
 export default CreateResearchForm;
+
+//../../../public/researchPaperTemplete/Template.zip

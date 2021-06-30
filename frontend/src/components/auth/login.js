@@ -50,12 +50,12 @@ export default function Login() {
 
   return (
     <div className="container">
-      <div className="card" style={{ marginTop: 25 }}>
+      <div className="rounded border p-5 bg-light w-75 d-flex flex-column mx-auto" style={{ marginTop: 25 }}>
         <div className="card-body">
           <h2 className="card-title text-center">Login</h2>
           <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
             <div className="row justify-content-center">
-            <div className="col-md-6">
+            <div className="col">
               <label className="form-label">Email</label>
               <input
                 type="text"
@@ -72,7 +72,7 @@ export default function Login() {
             </div>
             </div>
             <div className="row justify-content-center">
-            <div className="col-md-6 ">
+            <div className="col ">
               <label className="form-label">Password</label>
               <input
                 type="password"
