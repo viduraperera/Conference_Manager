@@ -24,8 +24,13 @@ import ReviewPanel from './src/components/review/ReviewPanel';
 import NotFound from './src/common/NotFound';
 
 const App = () => {
+
+  const BgColor={
+    backgroundColor: "#2d415a"
+  }
+
   return (
-    <div>
+    <div style={BgColor}>
       <BrowserRouter>
         <ToastProvider>
           <NavBar />

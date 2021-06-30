@@ -42,8 +42,9 @@ export const getWorkshop = async (req, res) => {
 
 export const createWorkshop = async (req, res) => {
   try {
+    console.log(req.body);
     const workshop = new Workshop({ ...req.body });
-    workshop.path = req.file.path;
+   // workshop.path = req.file.path || "";
     console.log(workshop)
     workshop.save((error, savedWorkshop) => {
       if (error) return res.status(400).send(error);

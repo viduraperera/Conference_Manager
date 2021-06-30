@@ -49,14 +49,26 @@ describe('Get single workshop Endpoints', () => {
   });
 });
 
-describe('creating a workshop', () =>{
-  it("create workshop", async () =>{
+describe('Get single research Endpoints', () => {
+  it('should get single research from the endpoint Basics of js for beginners', async () => {
+    const res = await request(app).get('/api/research/');
+    expect(res.statusCode).toEqual(200);
+  });
+});
+
+describe('creating a user', () =>{
+  it("create user", async () =>{
     const data ={
-      title:"test case01",
-      description: "this is a test run"
+      name:"test case012",
+      email: "qwers@gmail.com",
+      password: '1233',
+      contactNo: "123445461",
+      role: "researcher"
     }
-    const res = await request(app).post('/api/workshop/');
-    expect(res.statusCode).toEqual(201);
+
+    const res = await request(app).post('/api/user/').send(data);
+
+    expect(res.statusCode).toEqual(200);
   })
 })
 //

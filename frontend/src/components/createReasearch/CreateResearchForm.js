@@ -56,9 +56,23 @@ const CreateResearchForm = () =>{
         setResearchData({title: '', description: '', file: ''})
     }
 
+
+    //style object
+    const CardColor = {
+        backgroundColor: "#9898a7"
+    }
+
+    const Heading = {
+        fontFamily: "Roboto Slab"
+    }
+
+    const ButtonColor = {
+        backgroundColor: "#2d415a"
+    }
+
     return(
         <div className={"container"}>
-            <h1 className="display-5 text-center my-5">Upload your {path === 'createResearch'? 'Research' : 'Workshop'} Data</h1>
+            <h1 className="display-5 text-center my-5" fw-bold text-white style={Heading}>Upload your {path === 'createResearch'? 'Research' : 'Workshop'} Data</h1>
             <form className="rounded border p-5 bg-light w-75 d-flex flex-column mx-auto mb-4">
                 <div className="row">
                     <div className="mb-3 col">
@@ -99,11 +113,11 @@ const CreateResearchForm = () =>{
                         />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit} style={ButtonColor}>
                     Submit
                 </button>
             </form>
-                <div className="p-5 bg-light rounded-3">
+                <div className="p-5 rounded-3" style={CardColor}>
                     <h1>Research and Workshop Proposal Template</h1>
                     <p className="lead">Note that the proposals and research paper should be drafted as the template that been provided. Click the below button to download the template</p>
                     <a className="btn btn-lg btn-primary" href={download} role="button">Download from here >></a>

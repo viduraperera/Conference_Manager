@@ -40,12 +40,17 @@ const CountDown = () => {
       </span>,
     );
   });
+  //style object
+  const MainDiv = {
+    backgroundColor: "#cc9057"
+  }
+
   return (
-      <div className={"display-5 text-center  p-5 mb-4 bg-light rounded-3"}>
+      <div className={"display-5 text-center  p-5 mb-4 rounded-3"} style={MainDiv}>
         <div>
-          <h1 className={"display-5 fw-bold"}>Annual Conference {year} Countdown</h1>
-          <h3 className={"display-6 fw-bold"}>Conference Starts In:</h3>
-          <h2 className={"fs-4"}>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</h2>
+          <h1 className={"display-5 text-light fw-bold"}>Annual Conference {year} Countdown</h1>
+          <h3 className={"display-6 text-light fw-bold"}>Conference Starts In:</h3>
+          <h2 className={"fs-4 text-light"}>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</h2>
         </div>
       </div>
   );

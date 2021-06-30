@@ -7,8 +7,6 @@ const ApprovedWorkshopCard = ({workshop}) =>{
                 <div className="card-body dg-dark">
                     <h5 className="card-title">{workshop.title}</h5>
                     <p className="card-text">{workshop.description}</p>
-                    <p className={"card-text"}>venue: {workshop.venue}</p>
-                    <p className={"card-text"}>time: {workshop.date}</p>
                 </div>
             </div>
         </div>
