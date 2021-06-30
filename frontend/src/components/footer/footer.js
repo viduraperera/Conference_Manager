@@ -76,10 +76,10 @@ const Footer = () =>{
 
                         <ul className="list-unstyled">
                             <li>
-                                <a className="text-white text-decoration-none" href="/createWorkshop" style={FooterLinks}>Workshops</a>
+                                <a className="text-white text-decoration-none" href="/approvedWorkshops" style={FooterLinks}>Workshops</a>
                             </li>
                             <li>
-                                <a className="text-white text-decoration-none" href="#!" style={FooterLinks}>Research</a>
+                                <a className="text-white text-decoration-none" href="/approvedResearch" style={FooterLinks}>Research</a>
                             </li>
                             <li>
                                 <a className="text-white text-decoration-none" href="/createWorkshop" style={FooterLinks}>Create Workshop</a>
@@ -94,13 +94,13 @@ const Footer = () =>{
 
                         <ul className="list-unstyled">
                             <li>
-                                <a className="text-white text-decoration-none" href="#" style={FooterLinks}>Contact us</a>
+                                <a className="text-white text-decoration-none" href="/call_for_research_papers" style={FooterLinks}>FAQ on Research</a>
                             </li>
                             <li>
-                                <a className="text-white text-decoration-none" href="#!" style={FooterLinks}>FAQ</a>
+                                <a className="text-white text-decoration-none" href="/call_for_workshops" style={FooterLinks}>FAQ on Workshops</a>
                             </li>
                             <li>
-                                <a className="text-white text-decoration-none" href="#" style={FooterLinks}>Register</a>
+                                <a className="text-white text-decoration-none" href="/register" style={FooterLinks}>Register</a>
                             </li>
                         </ul>
                     </div>

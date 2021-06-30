@@ -22,18 +22,18 @@ const Research = () =>{
 
                     <div className="row g-5">
                         <div className="col-md-6">
-                            <h2>Whats in Store</h2>
+                            <h2>Contribute With Your Own Research</h2>
                             <p>Ready to beyond the starter template? Check out these open source projects that you can
                                 quickly duplicate to a new GitHub repository.</p>
                             <ul className="icon-list">
-                                <a href="/approvedResearch">
-                                    <button type="button" className="btn btn-info">Show Research</button>
+                                <a href="/createResearch">
+                                    <button type="button" className="btn btn-info">Submit Your Paper Here</button>
                                 </a>
                             </ul>
                         </div>
 
                         <div className="col-md-6">
-                            <h2>Contribute With Your Own Research</h2>
+                            <h2>How To Contribute</h2>
                             <p>Read more detailed instructions and documentation on using or contributing to
                                 Bootstrap.</p>
                             <ul className="icon-list">
